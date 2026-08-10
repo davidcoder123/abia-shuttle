@@ -31,7 +31,7 @@ function App() {
       path: "/",
       element: <HomeNavLayout />,
       children: [
-        { index: true, element: <Home /> },
+        { index: true, path: "/home", element: <Home /> },
         { path: "routes", element: <BusRoute /> },
         { path: "card", element: <CardSection /> },
         { path: "schedule", element: <BusSchedule /> },
