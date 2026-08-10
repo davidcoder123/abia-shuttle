@@ -62,7 +62,7 @@ export default function HomeNav() {
 
         {/* 3. RIGHT ACTIONS (ICONS + LOGOUT BUTTON) */}
         <div className="flex items-center space-x-6">
-          <button
+          {/* <button
             aria-label="Search"
             className="text-slate-700 hover:text-[#FF6200] transition-colors cursor-pointer"
           >
@@ -74,10 +74,11 @@ export default function HomeNav() {
             className="text-slate-700 hover:text-[#FF6200] transition-colors cursor-pointer"
           >
             <FiUser className="w-5 h-5 stroke-[2.2]" />
-          </button>
+          </button> */}
 
           <button
             aria-label="Notifications"
+            onClick={() => navigate("/notifications")}
             className="text-slate-700 hover:text-[#FF6200] transition-colors cursor-pointer"
           >
             <FiBell className="w-5 h-5 stroke-[2.2]" />

@@ -20,7 +20,7 @@ import {
 } from "react-icons/fi";
 
 export default function SideNav() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Safely retrieve location without crashing if used outside <BrowserRouter>
   let currentPath = "/transactions";
@@ -85,7 +85,7 @@ export default function SideNav() {
 
   return (
     <aside
-      className={`relative min-h-screen bg-white border-r border-slate-200 transition-all duration-300 ease-in-out flex flex-col ${
+      className={` min-h-screen bg-white border-r border-slate-200 transition-all duration-300 ease-in-out flex flex-col fixed ${
         isCollapsed ? "w-20" : "w-64"
       }`}
     >
