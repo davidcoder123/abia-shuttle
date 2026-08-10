@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 
 function HomeNavLayout() {
   return (
-    <div>
+    <main>
       <Outlet />
-    </div>
+    </main>
   );
 }
 
