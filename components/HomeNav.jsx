@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { FiSearch, FiUser, FiBell } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
-//import logo from "../assets/logo.png";
+
+//icons
+import { IoMdMenu } from "react-icons/io";
 
 export default function HomeNav() {
   const [activeTab, setActiveTab] = useState("Home");
@@ -40,7 +42,7 @@ export default function HomeNav() {
                 <Link
                   to={item.to}
                   onClick={() => setActiveTab(item.name)}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-base font-medium transition-colors ${
                     isActive
                       ? "text-[#FF6200] font-semibold"
                       : "text-slate-800 hover:text-[#FF6200]"
@@ -84,6 +86,10 @@ export default function HomeNav() {
           {/* Sign Up Button */}
           <button className="bg-[#FF6200] hover:bg-[#e05600] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer ml-2">
             Log Out
+          </button>
+
+          <button className="bg-[#FF6200] hover:bg-[#e05600] active:scale-95 text-white text-sm font-semibold px-3 py-2.5 rounded-2xl shadow-sm transition-all duration-150 cursor-pointer ml-2">
+            <IoMdMenu className="text-2xl" />
           </button>
         </div>
       </div>

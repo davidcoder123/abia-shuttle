@@ -39,7 +39,7 @@ export default function NavBar() {
                 <Link
                   to={item.to}
                   onClick={() => setActiveTab(item.name)}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-base font-medium transition-colors ${
                     isActive
                       ? "text-[#FF6200] font-semibold"
                       : "text-slate-800 hover:text-[#FF6200]"
