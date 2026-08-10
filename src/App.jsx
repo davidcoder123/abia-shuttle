@@ -1,12 +1,46 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NavLayout from "../layout/NavLayout";
+import AboutUs from "./pages/LandingPage/AboutUs";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import ContactUs from "./pages/LandingPage/ContactUs";
+import Register from "./pages/LandingPage/Register";
+import Login from "./pages/LandingPage/Login";
+import HomeNavLayout from "../layout/HomeNavLayout";
+import HomeNavLayout from "../layout/HomeNavLayout";
+import Home from "./pages/UserPage/Home";
+import BusRoute from "./pages/UserPage/BusRoute";
+import CardSetion from "./pages/UserPage/CardSection";
+import BusSchedule from "./pages/UserPage/BusSchedule";
+import TransactionHistory from "./pages/UserPage/TransactionHistory";
 
 function App() {
   const router = createBrowserRouter([
-    { path: "/", element: <NavLayout />, children: [{ index: true }] },
+    {
+      path: "/",
+      element: <NavLayout />,
+      children: [
+        { index: true, element: <LandingPage /> },
+        { path: "about", element: <AboutUs /> },
+        { path: "contact", element: <ContactUs /> },
+        { path: "signup", element: <Register /> },
+        { path: "login", element: <Login /> },
+      ],
+    },
+    {
+      path: "/",
+      element: <HomeNavLayout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "routes", element: <BusRoute /> },
+        { path: "card", element: <CardSection /> },
+        { path: "schedule", element: <BusSchedule /> },
+        { path: "notification", element: <Notification /> },
+        { path: "history", element: <TransactionHistory /> },
+      ],
+    },
   ]);
-  return <div></div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
