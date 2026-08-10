@@ -13,6 +13,7 @@ import BusRoute from "./pages/UserPage/BusRoute";
 import CardSetion from "./pages/UserPage/CardSection";
 import BusSchedule from "./pages/UserPage/BusSchedule";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
+import Notification from "./pages/UserPage/Notification";
 
 function App() {
   const router = createBrowserRouter([
@@ -35,7 +36,7 @@ function App() {
         { path: "routes", element: <BusRoute /> },
         { path: "card", element: <CardSection /> },
         { path: "schedule", element: <BusSchedule /> },
-        { path: "notification", element: <Notification /> },
+        { path: "notifications", element: <Notification /> },
         { path: "history", element: <TransactionHistory /> },
       ],
     },

@@ -87,10 +87,6 @@ export default function HomeNav() {
           <button className="bg-[#FF6200] hover:bg-[#e05600] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer ml-2">
             Log Out
           </button>
-
-          <button className="bg-[#FF6200] hover:bg-[#e05600] active:scale-95 text-white text-sm font-semibold px-3 py-2.5 rounded-2xl shadow-sm transition-all duration-150 cursor-pointer ml-2">
-            <IoMdMenu className="text-2xl" />
-          </button>
         </div>
       </div>
     </header>
