@@ -11,12 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.7.1",
-<<<<<<< HEAD
     "@tailwindcss/vite": "^4.3.3",
-=======
-    "@tailwindcss/cli": "^4.3.3",
-    "@tailwindcss/vite": "^4.3.2",
->>>>>>> b8c29b3 (notification)
     "lucide-react": "^1.31.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

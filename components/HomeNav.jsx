@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FiSearch, FiUser, FiBell } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
-<<<<<<< HEAD
 //icons
 import { IoMdMenu } from "react-icons/io";
 
@@ -93,10 +92,4 @@ export default function HomeNav() {
       </div>
     </header>
   );
-=======
-function HomeNav() {
-  return <nav>
-
-  </nav>;
->>>>>>> b8c29b3 (notification)
 }
