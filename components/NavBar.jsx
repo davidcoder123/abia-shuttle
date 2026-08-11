@@ -11,6 +11,7 @@ export default function NavBar() {
     { name: "Home", to: "/" },
     { name: "About Us", to: "/about" },
     { name: "Contact Us", to: "/contact" },
+    { name: "Register", to: "/signup" },
   ];
 
   const handleMobileNav = (path) => {
