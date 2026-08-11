@@ -10,13 +10,12 @@ import HomeNavLayout from "../layout/HomeNavLayout";
 import CardSection from "./pages/UserPage/CardSection";
 import Home from "./pages/UserPage/Home";
 import BusRoute from "./pages/UserPage/BusRoute";
-import CardSetion from "./pages/UserPage/CardSection";
+import CardSection from "./pages/UserPage/CardSection";
 import BusSchedule from "./pages/UserPage/BusSchedule";
 import Notification from "./pages/UserPage/Notification";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
 
 
-function App() {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -33,15 +32,16 @@ function App() {
       path: "/",
       element: <HomeNavLayout />,
       children: [
-        { index: true, element: <Home /> },
+        { index: true, path: "/home", element: <Home /> },
         { path: "routes", element: <BusRoute /> },
         { path: "card", element: <CardSection /> },
         { path: "schedule", element: <BusSchedule /> },
-        { path: "notification", element: <Notification /> },
+        { path: "notifications", element: <Notification /> },
         { path: "history", element: <TransactionHistory /> },
       ],
     },
   ]);
+  function App() {
   return <RouterProvider router={router} />;
 }
 
