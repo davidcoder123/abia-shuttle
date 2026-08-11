@@ -1,10 +1,14 @@
 import React from "react";
-import LandingPageSections from "../../../components/landingPageSections";
+import LandingPageFirstSection from "../../../components/landingPageFirstSection";
+import SmarterTransportation from "../../../components/smarterTransportation";
+import Steps from "../../../components/Steps";
 
 function LandingPage() {
   return (
-    <section className="bg-amber-800">
-      <LandingPageSections />
+    <section>
+      <LandingPageFirstSection />
+      <SmarterTransportation />
+      <Steps/>
     </section>
   );
 }
