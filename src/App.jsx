@@ -7,14 +7,15 @@ import ContactUs from "./pages/LandingPage/ContactUs";
 import Register from "./pages/LandingPage/Register";
 import Login from "./pages/LandingPage/Login";
 import HomeNavLayout from "../layout/HomeNavLayout";
-import HomeNavLayout from "../layout/HomeNavLayout";
+// import HomeNavLayout from "../layout/HomeNavLayout";
 import Home from "./pages/UserPage/Home";
 import BusRoute from "./pages/UserPage/BusRoute";
-import CardSetion from "./pages/UserPage/CardSection";
+import CardSection from "./pages/UserPage/CardSection";
 import BusSchedule from "./pages/UserPage/BusSchedule";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
+import Notification from "./pages/UserPage/Notification";
 
-function App() {
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -40,6 +41,7 @@ function App() {
       ],
     },
   ]);
+  function App() {
   return <RouterProvider router={router} />;
 }
 

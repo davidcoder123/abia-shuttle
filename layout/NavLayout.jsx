@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 function NavLayout() {
   return (
     <main>
+  
       <NavBar/>
       <Outlet />
     </main>

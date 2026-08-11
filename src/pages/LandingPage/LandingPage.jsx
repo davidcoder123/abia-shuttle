@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import LandingPageSections from "../../../components/landingPageSections";
 
 function LandingPage() {
   return (
-    <div>
-      
-    </div>
-  )
+    <section className="bg-amber-800">
+      <LandingPageSections />
+    </section>
+  );
 }
 
-export default LandingPage
+export default LandingPage;
