@@ -1,8 +1,12 @@
 import {
   FaBell,
   FaCar,
+<<<<<<< HEAD
   FaEllipsisV,
   FaBus
+=======
+  FaEllipsisV
+>>>>>>> 83f0937a72fa16bf5e7781b2401bd5be9fb60352
 } from "react-icons/fa";
 
 function Notification() {
@@ -41,11 +45,16 @@ function Notification() {
       title: "New Deals",
       message: "Your cart has been updated with ₦2,500,000",
       date: "May 25 2025 - 9:45 AM",
+<<<<<<< HEAD
       icon: <FaBell className="" />
+=======
+      icon: <FaBell />
+>>>>>>> 83f0937a72fa16bf5e7781b2401bd5be9fb60352
     }
   ];
 
   return (
+<<<<<<< HEAD
     <div className=" pt-7  bg-[#fffbf5] ">
 
       {/* Page heading */}
@@ -100,6 +109,56 @@ function Notification() {
 
             {/* Three dots or more icone */}
             <div className=" font-bold text-2xl md:text-3xl lg:text-3xl">
+=======
+    <div className="page">
+
+      {/* Page heading */}
+      <div className="heading">
+
+        <h1>Notifications</h1>
+
+        <button className="mark-read">
+          Mark all as read
+        </button>
+
+      </div>
+
+
+      {/* Notifications */}
+
+      <div className="notification-container">
+
+        {notifications.map((notification, index) => (
+
+          <div className="notification" key={index}>
+
+            {/* Icon */}
+            <div className="notification-icon">
+              {notification.icon}
+            </div>
+
+
+            {/* Text */}
+            <div className="notification-text">
+
+              <h3>
+                {notification.title}
+              </h3>
+
+              <p>
+                {notification.message}
+              </p>
+
+              <h6>
+                {notification.date}
+              </h6>
+
+            </div>
+
+
+            {/* Three dots */}
+            <div className="more-icon">
+>>>>>>> 83f0937a72fa16bf5e7781b2401bd5be9fb60352
               <FaEllipsisV />
             </div>
 
@@ -107,10 +166,39 @@ function Notification() {
 
         ))}
 
+<<<<<<< HEAD
       </section>
 
 
 
+=======
+      </div>
+
+
+      {/* Bottom advertisement */}
+
+      <div className="travel-box">
+
+        <div>
+          <h2>Ready to travel smarter?</h2>
+
+          <p>
+            Join thousands of smart travellers using our GREEN SHUTTLE.
+          </p>
+
+          <button>
+            Google Play
+          </button>
+
+          <button>
+            App Store
+          </button>
+        </div>
+
+        <FaBus className="Group 87.png" />
+
+      </div>
+>>>>>>> 83f0937a72fa16bf5e7781b2401bd5be9fb60352
 
     </div>
   );

@@ -5,9 +5,9 @@ import { IoLogoGooglePlaystore, IoLogoApple } from "react-icons/io5";
 
 export default function LandingPageFirstSection() {
   return (
-    <section className="grid md:grid-cols-[400px_2fr] grid-cols-1 px-10 gap-2 pt-4 -pb-90">
-      <section className="space-y-6 px-8">
-        <div className="bg-amber-500 rounded-full w-40 px-2 text-center text-[12px] text-amber-600 font-semibold">
+    <section className="flex md:flex-row flex-col md:gap-2 gap-10 pt-4 items-center pb-20 md:px-20 px-5">
+      <section className="space-y-6 px-8 w-full md:w-[40%]">
+        <div className="bg-amber-500/30 rounded-full w-full md:w-50 px-1 py-1 text-center text-sm text-amber-600 font-semibold">
           <p>Smart Travels, Better City</p>
         </div>
 
@@ -15,7 +15,7 @@ export default function LandingPageFirstSection() {
           Your Journey, <span className="text-orange-500">Simplified.</span>
         </h1>
 
-        <p className="text-[12px] font-semibold font-mono">
+        <p className="text-base font-semibold">
           Track buses live, top up your cards, plan routes and travel smarter
           with <span className="text-orange-400 ">ABIA GREEN SHUTTLE.</span>
         </p>
@@ -54,11 +54,11 @@ export default function LandingPageFirstSection() {
         </div>
       </section>
 
-      <section className="flex flex-col justify-center items-center md:justify-start">
+      <section className="w-full md:w-[60%]">
         <img
-          src="/heroImage.png"
+          src="/heroImage2.svg"
           alt=""
-          className="lg:w-[135%] md:w-[165%] md:max-w-none lg:-ml-60 md:-ml-65 max-w-[130%] -ml-40"
+          className="w-full"
         />
       </section>
     </section>

@@ -30,15 +30,15 @@ export default function SmarterTransportation() {
     },
   ];
   return (
-    <section className="py-6 md:px-16 px-2 text-center lg:-mt-12">
-      <h1 className="md:text-3xl text-xl font-bold">
+    <section className=" md:px-20 px-10 text-center py-15">
+      <h1 className="md:text-3xl text-2xl font-bold">
         Smarter Transportation For Abia State
       </h1>
-      <p className="md:text-[16px] text-[13px]">
+      <p className="md:text-base text-sm mb-15">
         Safe, reliable, and eco-friendly transportation for everyone
       </p>
 
-      <div className="grid lg:grid-cols-4 grid-cols-2  justify-between lg:gap-4 gap-10 mt-4 md:px-4">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1  justify-between lg:gap-4 gap-10 mt-4 md:px-4">
         {smallDivs.map((p, idx) => (
           <div
             key={idx}
