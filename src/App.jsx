@@ -7,7 +7,6 @@ import ContactUs from "./pages/LandingPage/ContactUs";
 import Register from "./pages/LandingPage/Register";
 import Login from "./pages/LandingPage/Login";
 import HomeNavLayout from "../layout/HomeNavLayout";
-import HomeNavLayout from "../layout/HomeNavLayout";
 import Home from "./pages/UserPage/Home";
 import BusRoute from "./pages/UserPage/BusRoute";
 import CardSetion from "./pages/UserPage/CardSection";
@@ -15,6 +14,7 @@ import BusSchedule from "./pages/UserPage/BusSchedule";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
 
 function App() {
+  return 
   const router = createBrowserRouter([
     {
       path: "/",
@@ -41,6 +41,8 @@ function App() {
     },
   ]);
   return <RouterProvider router={router} />;
+    // <TransactionHistory />
+  
 }
 
 export default App;
