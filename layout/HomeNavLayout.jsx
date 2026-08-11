@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import HomeNav from "../components/HomeNav";
-import SideNav from "../components/SideNav";
-import Footer from "../components/Footer";
+import HomeNav from "../components/header&footer/HomeNav";
+import SideNav from "../components/header&footer/SideNav";
+import Footer from "../components/header&footer/Footer";
 
 function HomeNavLayout() {
   return (
