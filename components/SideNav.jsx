@@ -90,7 +90,8 @@ export default function SideNav() {
       >
         {/* TOP SPACER / HEADER AREA */}
         <div className="p-4 pt-16 flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider"></span>
+          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+          </span>
         </div>
 
         {/* NAVIGATION ITEMS */}
