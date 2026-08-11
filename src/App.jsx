@@ -11,9 +11,11 @@ import Home from "./pages/UserPage/Home";
 import BusRoute from "./pages/UserPage/BusRoute";
 import CardSection from "./pages/UserPage/CardSection";
 import BusSchedule from "./pages/UserPage/BusSchedule";
+import Notification from "./pages/UserPage/Notification";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
 import Notification from "./pages/UserPage/Notification";
 
+<<<<<<< HEAD
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +41,9 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+=======
+
+>>>>>>> b8c29b3 (notification)
 function App() {
   return <RouterProvider router={router} />;
 }
