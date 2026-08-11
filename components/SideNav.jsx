@@ -85,7 +85,7 @@ export default function SideNav() {
 
   return (
     <aside
-      className={` min-h-screen bg-white border-r border-slate-200 transition-all duration-300 ease-in-out flex flex-col fixed ${
+      className={`7 min-h-screen bg-white border-r border-slate-200 transition-all duration-300 ease-in-out flex flex-col fixed ${
         isCollapsed ? "w-20" : "w-64"
       }`}
     >
