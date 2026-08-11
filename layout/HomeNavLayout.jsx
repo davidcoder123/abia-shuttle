@@ -6,11 +6,13 @@ import Footer from "../components/Footer";
 
 function HomeNavLayout() {
   return (
-    <main>
+    <main className="">
       <HomeNav />
       <SideNav />
-      <Outlet />
-      <Footer/>
+      <div className="ml-0">
+        <Outlet />
+        <Footer />
+      </div>
     </main>
   );
 }
