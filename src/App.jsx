@@ -10,12 +10,11 @@ import HomeNavLayout from "../layout/HomeNavLayout";
 import CardSection from "./pages/UserPage/CardSection";
 import Home from "./pages/UserPage/Home";
 import BusRoute from "./pages/UserPage/BusRoute";
-import CardSetion from "./pages/UserPage/CardSection";
+import CardSection from "./pages/UserPage/CardSection";
 import BusSchedule from "./pages/UserPage/BusSchedule";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
 import Notification from "./pages/UserPage/Notification";
 
-function App() {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -41,6 +40,7 @@ function App() {
       ],
     },
   ]);
+  function App() {
   return <RouterProvider router={router} />;
 }
 
