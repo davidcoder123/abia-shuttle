@@ -9,7 +9,7 @@ import { RiDownload2Fill } from "react-icons/ri";
 
 function TransactionHistory() {
   return (
-      <section className=" ml-40 my-20 flex flex-col  items-start ">
+      <section className=" ml-4 md:ml-40 my-10 md:my-20 md:flex md:flex-col h-screen items-start ">
         <div>
           <h1 className="text-3xl font-bold">Transaction History</h1>
           <p>View all your transactions</p>
@@ -46,8 +46,8 @@ function TransactionHistory() {
           </div>
         </div>
 
-        <section className="mt-5 overflow-hidden w-[50vw] rounded-2xl border border-gray-700 ">
-          <table className="w-[50vw] border-collapse">
+        <section className="mt-5 md:overflow-hidden lg:w-[80vw] rounded-2xl border border-gray-700 ">
+          <table className="lg:w-[80vw] border-collapse">
             <thead className="text-left">
               <tr className="border-b-2 border-gray-600 text-[15px] font-bold">
                 <th className="px-4 py-2">Date</th>
@@ -179,7 +179,7 @@ function TransactionHistory() {
           </table>
         </section>
 
-        <div className="mt-6 space-x-2 flex ml-50">
+        <div className="mt-6 space-x-2 flex ml-30 lg:ml-50">
           <button className="border border-gray-500 px-1 py-1 min-w-5 rounded-[5px] text-center shadow-sm hover:bg-[#fd680b] ">
             <MdArrowBackIos className=" pl-1 text-[#fd680b] font-bold text-[14px ]  hover:text-white" />
           </button>

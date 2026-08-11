@@ -14,35 +14,35 @@ import BusSchedule from "./pages/UserPage/BusSchedule";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
 
 function App() {
-  return 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <NavLayout />,
-      children: [
-        { index: true, element: <LandingPage /> },
-        { path: "about", element: <AboutUs /> },
-        { path: "contact", element: <ContactUs /> },
-        { path: "signup", element: <Register /> },
-        { path: "login", element: <Login /> },
-      ],
-    },
-    {
-      path: "/",
-      element: <HomeNavLayout />,
-      children: [
-        { index: true, element: <Home /> },
-        { path: "routes", element: <BusRoute /> },
-        { path: "card", element: <CardSection /> },
-        { path: "schedule", element: <BusSchedule /> },
-        { path: "notification", element: <Notification /> },
-        { path: "history", element: <TransactionHistory /> },
-      ],
-    },
-  ]);
-  return <RouterProvider router={router} />;
-    // <TransactionHistory />
-  
+  return ( 
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <NavLayout />,
+  //     children: [
+  //       { index: true, element: <LandingPage /> },
+  //       { path: "about", element: <AboutUs /> },
+  //       { path: "contact", element: <ContactUs /> },
+  //       { path: "signup", element: <Register /> },
+  //       { path: "login", element: <Login /> },
+  //     ],
+  //   },
+  //   {
+  //     path: "/",
+  //     element: <HomeNavLayout />,
+  //     children: [
+  //       { index: true, element: <Home /> },
+  //       { path: "routes", element: <BusRoute /> },
+  //       { path: "card", element: <CardSection /> },
+  //       { path: "schedule", element: <BusSchedule /> },
+  //       { path: "notification", element: <Notification /> },
+  //       { path: "history", element: <TransactionHistory /> },
+  //     ],
+  //   },
+  // ]);
+  // return <RouterProvider router={router} />;
+    <TransactionHistory />
+  )
 }
 
 export default App;
