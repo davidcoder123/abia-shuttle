@@ -12,7 +12,9 @@ import Home from "./pages/UserPage/Home";
 import BusRoute from "./pages/UserPage/BusRoute";
 import CardSetion from "./pages/UserPage/CardSection";
 import BusSchedule from "./pages/UserPage/BusSchedule";
+import Notification from "./pages/UserPage/Notification";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
+
 
 function App() {
   const router = createBrowserRouter([
