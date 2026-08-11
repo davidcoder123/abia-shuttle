@@ -65,7 +65,7 @@ export default function LandingPageSectionII() {
         <h1 className="py-5">Explore Top Routes</h1>
       </div>
 
-      <div className="grid lg:grid-cols-5 grid-cols-2 grid:gap-2 md:grid-cols-3 w-full justify-center gap-5 lg:gap-2.5 md:gap-2.5 mt-5 px-5">
+      <div className="grid lg:grid-cols-5 grid-cols-2 grid:gap-2 md:grid-cols-3 w-full justify-center gap-5 lg:gap-2.5 md:gap-2.5 mt-5 lg:px-20 px-5 md:px-10">
         {myAwesome.map((product) => (
           <div className=" shadow-2xl rounded-xl mx-5 flex flex-col gap-1 w-[90%]">
             <img src={product.image} alt="" />
@@ -85,7 +85,7 @@ export default function LandingPageSectionII() {
         ))}
       </div>
 
-      <div className="flex flex-col lg:flex-row md:flex-row mt-5 justify-between px-5">
+      <div className="flex flex-col lg:flex-row md:flex-row mt-15 justify-between lg:px-20 px-5 md:px-10 ">
         <div className="flex justify-center">
           <img src="./Bus.png" alt="" />
         </div>
@@ -93,7 +93,7 @@ export default function LandingPageSectionII() {
         <div className="bg-[#ff6200] relative py-5 text-white lg:w-[60%] md:w-[60%] w-full h-full mt-15 rounded-2xl">
           <h2 className="font-bold text-2xl px-5 pt-2.5">Our Impact</h2>
 
-          <div className="flex justify-between px-10 pt-5">
+          <div className="flex justify-between px-5 items-center pt-5">
             <div className="border-r lg:pr-7.5 md:pr-5 pr-5">
               <p className="font-bold text-xl">50+</p>
               <p>Electric Buses</p>
@@ -128,12 +128,12 @@ export default function LandingPageSectionII() {
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 lg:px-20 px-5 md:px-10">
         <h1 className="flex justify-center font-bold text-3xl pb-10">
           Trusted by Thousands
         </h1>
 
-        <div className="flex flex-col lg:flex-row md:flex-row gap-5 items-center justify-center">
+        <div className="flex flex-col lg:flex-row md:flex-row gap-5 items-center justify-center ">
           <div className="lg:w-[30%] md:w-[30%] w-[80%]  shadow-2xl flex flex-col gap-2.5 rounded-2xl px-2.5 py-5">
             <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
             <div className="flex mt-5 gap-2.5">
@@ -191,7 +191,7 @@ export default function LandingPageSectionII() {
       </div>
 
       
-      <div className=" bg-[#ff6200] py-5 px-10 mx-5 my-10 text-white rounded-2xl flex flex-col gap-2.5">
+      <div className=" bg-[#ff6200] py-5 px-10 lg:mx-20 mx-5 md:mx-10  my-10 text-white rounded-2xl flex flex-col gap-2.5">
         <h1 className="font-bold text-2xl">Ready to travel smarter?</h1>
         <p>Join thousands of smart commuters using ABIA GREEN SHUTTLE</p>
 
