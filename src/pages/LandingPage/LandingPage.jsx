@@ -4,6 +4,7 @@ import SmarterTransportation from "../../../components/LandingPage/smarterTransp
 import Steps from "../../../components/LandingPage/Steps";
 import LandingPageSectionII from "../../../components/LandingPage/LandingPageSectionII";
 import ImpactSection from "../../../components/LandingPage/ImpactSection";
+import ReadyToTravel from "../../../components/ReadyToTravel";
 
 function LandingPage() {
   return (
@@ -13,6 +14,7 @@ function LandingPage() {
       <SmarterTransportation />
       <LandingPageSectionII />
       <ImpactSection />
+      <ReadyToTravel />
     </section>
   );
 }

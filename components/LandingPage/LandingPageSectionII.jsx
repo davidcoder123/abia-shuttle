@@ -61,14 +61,17 @@ export default function LandingPageSectionII() {
     },
   ];
   return (
-    <section>
-      <div className="flex justify-center font-bold text-3xl">
-        <h1 className="py-3">Explore Top Routes</h1>
+    <section className="py-20">
+      <div className="flex justify-center font-bold text-3xl ">
+        <h1 className="mb-10">Explore Top Routes</h1>
       </div>
 
-      <div className="grid lg:grid-cols-5 grid-cols-1 grid:gap-2 md:grid-cols-3 w-full justify-center gap-5 lg:gap-2.5 md:gap-2.5 mt-5 lg:px-20 px-5 md:px-10">
-        {myAwesome.map((product) => (
-          <div className=" shadow-2xl pb-5 rounded-xl mx-5 flex flex-col gap-1 w-[90%]">
+      <div className="grid lg:grid-cols-5 grid-cols-1 md:grid-cols-3 w-full md:gap-5 lg:px-20 px-10">
+        {myAwesome.map((product, index) => (
+          <div
+            key={index}
+            className=" shadow-2xl pb-5 rounded-xl flex flex-col gap-3 mb-5 md:mb-2 w-full"
+          >
             <img src={product.image} alt="" className="rounded-t-xl" />
             <div className="px-2">
               <h2 className="font-bold px-2.5">
@@ -87,7 +90,6 @@ export default function LandingPageSectionII() {
           </div>
         ))}
       </div>
-      
 
       {/* <div className="mt-5 lg:px-20 px-5 md:px-10">
         <h1 className="flex justify-center font-bold text-3xl pb-10">
