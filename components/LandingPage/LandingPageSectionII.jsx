@@ -61,12 +61,12 @@ export default function LandingPageSectionII() {
     },
   ];
   return (
-    <section className="py-20">
+    <section className="py-20 lg:px-35 md:px-10 px-6">
       <div className="flex justify-center font-bold text-3xl ">
-        <h1 className="mb-10">Explore Top Routes</h1>
+        <h1 className="mb-15">Explore Top Routes</h1>
       </div>
 
-      <div className="grid lg:grid-cols-5 grid-cols-1 md:grid-cols-3 w-full md:gap-5 lg:px-20 px-10">
+      <div className="grid lg:grid-cols-5 grid-cols-1 md:grid-cols-3 w-full md:gap-5 ">
         {myAwesome.map((product, index) => (
           <div
             key={index}
