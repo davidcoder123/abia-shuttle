@@ -11,13 +11,19 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.7.1",
+<<<<<<< HEAD
+    "@tailwindcss/vite": "^4.3.2",
+    "leaflet": "^1.9.4",
+=======
     "@tailwindcss/vite": "^4.3.3",
+>>>>>>> 430bea015e54c41823c5c19943fdb90ad52d693e
     "lucide-react": "^1.31.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-hook-form": "^7.84.0",
     "react-icon": "^1.0.0",
     "react-icons": "^5.7.0",
+    "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.18.1",
     "tailwindcss": "^4.3.3",
     "zod": "^4.4.3"
