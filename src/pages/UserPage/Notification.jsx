@@ -6,35 +6,34 @@ import {
 } from "react-icons/fa";
 
 function Notification() {
-
   // All our notifications
   const notifications = [
     {
       title: "Cart Updated",
       message: "Your cart has been updated with ₦2,500,000",
       date: "May 25 2025 - 9:45 AM",
-      icon: <FaBell />
+      icon: <FaBell />,
     },
 
     {
       title: "Trip Reminder",
       message: "Your trip to Umuahia starts in 30 mins",
       date: "May 25 2025 - 9:45 AM",
-      icon: <FaBell />
+      icon: <FaBell />,
     },
 
     {
       title: "Bus Delayed",
       message: "Bus AB12345 is delayed by 15 mins",
       date: "May 25 2025 - 9:45 AM",
-      icon: <FaCar />
+      icon: <FaCar />,
     },
 
     {
       title: "Late Bus Alert",
       message: "Your bus trip has been delayed by 20 mins",
       date: "May 25 2025 - 9:45 AM",
-      icon: <FaBell />
+      icon: <FaBell />,
     },
 
     {
@@ -102,9 +101,7 @@ function Notification() {
             <div className=" font-bold text-2xl md:text-3xl lg:text-3xl">
               <FaEllipsisV />
             </div>
-
           </div>
-
         ))}
 
       </section>
