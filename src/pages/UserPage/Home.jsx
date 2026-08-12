@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "../../../components/home/Hero";
 //import QuickActions from '../../../components/home/QuickAction'
 //import UpcomingDepartures from '../../../components/home/UpcomingDepatures'
-//import PopularRoutes from '../../../components/home/PopularRoutes'
+import PopularRoutes from '../../../components/home/PopularRoutes'
 import LiveTracking from "../../../components/home/LiveTracking";
 import WhyChooseUs from "../../../components/home/WhyChooseUs";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -14,6 +14,12 @@ import { GoDotFill } from "react-icons/go";
 
 
 
+    const handleTrackClick = () => {
+    const trackingElement = document.getElementById('live-tracking');
+    if (trackingElement) {
+      trackingElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
 const card = [
   {
@@ -33,6 +39,7 @@ const card = [
     head: "Track Bus",
     par: "Live bus tracking",
     icon: <MdKeyboardArrowRight />,
+    onClick: handleTrackClick 
   },
 ];
 const routes = [
@@ -106,19 +113,21 @@ const routes = [
   },
 ];
 
-const Home = () => {
+
+const Home = ({ onTrackClick }) => {
   return (
     <div>
       <Hero />
       {/* <QuickActions />
       <UpcomingDepartures />
-      <PopularRoutes /> */}
-      <section>
-        <div className="px-4 py-6 lg:p-10">
+       */}
+      <section className="w-full max-w-6xl mx-auto px-4 my-1">
+        <div className="px-4 py-6  lg:p-10 my-2 ">
           <h1 className="font-bold text-3xl mb-5">Quick Actions</h1>
           <div className="flex flex-col gap-4  lg:flex-row lg:justify-between ">
             {card.map((r, idx) => (
-              <div key={idx}>
+              <div key={idx}
+                onClick={r.onClick}>
                 <div className=" flex shadow-xl w-full lg:w-85 min-h-25 lg:justify-between  bg-white  py-5 px-3  gap-4 rounded-xl">
                   <img className="w-15 h-15 object-cover" src={r.img} alt="" />
                   <div className="mr-3 flex-1">
@@ -249,7 +258,7 @@ const Home = () => {
             </div>
           </div>
           {/* ..................popular routes..................... */}
-          <div>
+          {/* <div>
             <div>
               <h1 className="font-bold text-3xl py-15">Popular Routes</h1>
             </div>
@@ -258,10 +267,10 @@ const Home = () => {
               <img className="w-95" src="/Rectangle 216.png" alt="" />
               <img className="w-95" src="/Rectangle 216.png" alt="" />
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
-
+      <PopularRoutes />
       <LiveTracking />
       <WhyChooseUs />
     </div>

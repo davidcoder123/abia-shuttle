@@ -26,7 +26,7 @@ const LiveTracking = forwardRef((props, ref) => {
   ];
 
   return (
-    <section id='live-tracking' className="w-full max-w-6xl mx-auto px-4 my-10 my-20 scroll-mt-6">
+    <section className="w-full max-w-6xl mx-auto px-4 my-30  scroll-mt-6" id='live-tracking' >
       <h3 className="text-3xl font-bold text-gray-900 mb-6">Live Bus Tracking</h3>
       
       <div className="w-full h-96 md:h-[480px] bg-white rounded-3xl border-4 border-[#3B82F6] shadow-lg overflow-hidden relative z-10">
