@@ -2,7 +2,8 @@ import React from "react";
 import LandingPageFirstSection from "../../../components/LandingPage/landingPageFirstSection";
 import SmarterTransportation from "../../../components/LandingPage/smarterTransportation";
 import Steps from "../../../components/LandingPage/Steps";
-import LandingPageSectionII from "../../../components/LandingPageSectionII";
+import LandingPageSectionII from "../../../components/LandingPage/LandingPageSectionII";
+import ImpactSection from "../../../components/LandingPage/ImpactSection";
 
 function LandingPage() {
   return (
@@ -11,6 +12,7 @@ function LandingPage() {
       <Steps />
       <SmarterTransportation />
       <LandingPageSectionII />
+      <ImpactSection />
     </section>
   );
 }
