@@ -1,14 +1,16 @@
 import React from "react";
-import LandingPageFirstSection from "../../../components/landingPageFirstSection";
-import SmarterTransportation from "../../../components/smarterTransportation";
-import Steps from "../../../components/Steps";
+import LandingPageFirstSection from "../../../components/LandingPage/landingPageFirstSection";
+import SmarterTransportation from "../../../components/LandingPage/smarterTransportation";
+import Steps from "../../../components/LandingPage/Steps";
+import LandingPageSectionII from "../../../components/LandingPageSectionII";
 
 function LandingPage() {
   return (
     <section>
       <LandingPageFirstSection />
+      <Steps />
       <SmarterTransportation />
-      <Steps/>
+      <LandingPageSectionII />
     </section>
   );
 }
