@@ -12,6 +12,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 
+import ReadyToTravel from "../../../components/ReadyToTravel";
+
 const faqs = [
   {
     q: "How do I get a travel card?",
@@ -75,7 +77,9 @@ function FaqItem({ item, isOpen, onToggle }) {
       </button>
       <div
         className={`grid transition-all duration-200 ease-in-out ${
-          isOpen ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0"
+          isOpen
+            ? "grid-rows-[1fr] opacity-100 mt-2"
+            : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="overflow-hidden">
@@ -98,8 +102,8 @@ export default function ContactUs() {
             Contact <span className="text-orange-500">Us</span>
           </h1>
           <p className="mx-auto mt-4 max-w-md text-sm font-medium text-neutral-600">
-            Have questions about routes, schedule, cards, or partnerships?
-            Reach out to our team anytime
+            Have questions about routes, schedule, cards, or partnerships? Reach
+            out to our team anytime
           </p>
           <span className="mt-4 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-xs font-semibold text-orange-500">
             We are here to help you!
@@ -137,7 +141,10 @@ export default function ContactUs() {
             </div>
 
             <div className="flex items-start gap-3 rounded-xl border border-neutral-300 bg-white px-4 py-3.5">
-              <MessageSquare size={18} className="mt-0.5 shrink-0 text-neutral-400" />
+              <MessageSquare
+                size={18}
+                className="mt-0.5 shrink-0 text-neutral-400"
+              />
               <textarea
                 placeholder="Message"
                 rows={5}
@@ -224,6 +231,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
+      <ReadyToTravel />
     </div>
   );
 }

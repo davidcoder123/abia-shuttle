@@ -2,15 +2,15 @@ import React from "react";
 
 export default function ImpactSection() {
   return (
-    <section className="w-full md:px-20 mx-auto px-4 sm:px-6 py-10 lg:py-16">
+    <section className="w-full md:px-30 mx-auto px-4 sm:px-6 py-10 lg:py-16">
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
         
         {/* 1. BUS IMAGE CONTAINER */}
         <div className="w-full md:w-[30%] flex justify-center items-center">
           <img
-            src="./Bus.png"
+            src="mobile.png"
             alt="Abia State Electric Bus"
-            className="w-full lg:max-w-lg object-contain h-auto drop-shadow-md"
+            className="w-full lg:max-w-lg object-contain drop-shadow-xl h-100"
           />
         </div>
 
@@ -19,7 +19,7 @@ export default function ImpactSection() {
           
           {/* Section Header */}
           <div>
-            <h2 className="font-bold text-2xl sm:text-3xl tracking-tight">
+            <h2 className="font-bold text-3xl tracking-tight">
               Our Impact
             </h2>
           </div>

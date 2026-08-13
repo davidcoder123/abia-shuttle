@@ -24,10 +24,8 @@ export default function Footer() {
         {/* COLUMN 1: BRAND & SOCIALS */}
         <div className="flex flex-col space-y-4">
           {/* Logo Placeholder */}
-          <div className="w-28 h-10 bg-white rounded-full flex items-center justify-center shadow-md">
-            <span className="text-xs font-bold text-slate-800 tracking-wider uppercase">
-              Logo
-            </span>
+          <div className=" flex items-center justify-center shadow-md">
+            <img src="abia-logo.png" alt="abia logo" className="h-18 w-18 rounded-full" />
           </div>
 
           <p className="text-slate-300 text-sm leading-relaxed max-w-xs">

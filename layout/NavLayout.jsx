@@ -8,6 +8,7 @@ function NavLayout() {
     <main>
       <NavBar />
       <Outlet />
+
       <Footer />
     </main>
   );
