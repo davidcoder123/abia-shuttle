@@ -154,7 +154,7 @@ export default function ContactUs() {
 
             <button
               type="submit"
-              className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 py-4 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-[#803100]"
+              className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF6200] py-4 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-[#803100]"
             >
               Send Message
               <Send size={16} />
