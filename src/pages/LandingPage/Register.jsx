@@ -292,7 +292,7 @@ function Register() {
           </a>
           <a
             href="https://www.apple.com"
-            className="flex items-center border border-gray-300 shadow rounded-xl px-10 gap-2"
+            className="flex items-center border border-gray-300 shadow rounded-xl py-2 px-10 gap-2"
           >
             <img src="apple.jpg" alt="Apple" className="h-8 w-12" />
             <span>Sign Up with Apple</span>
