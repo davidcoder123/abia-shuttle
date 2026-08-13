@@ -5,8 +5,9 @@ import {
   FaEllipsisV,
   FaTrash
 } from "react-icons/fa";
+import ReadyToTravel from "../../../components/ReadyToTravel";
 
-// Moving initial state outside component or into useState
+// Initial state with unique IDs for deleting
 const initialNotifications = [
   {
     id: 1,
@@ -62,7 +63,6 @@ function Notification() {
 
   return (
     <div className="pt-7 bg-[#fffbf5] min-h-screen">
-
       {/* Page heading */}
       <section>
         <div>
@@ -72,13 +72,13 @@ function Notification() {
         </div>
 
         <div>
-          <h1 className="text-3xl lg:text-4xl md:text-3xl font-bold pl-10 md:pl-50 lg:pl-51 pb-2">
+          <h1 className="text-2xl lg:text-4xl md:text-3xl font-bold pl-10 md:pl-50 lg:pl-51 pb-2">
             Notifications
           </h1>
         </div>
       </section>
 
-      {/* Notifications */}
+      {/* Notifications List */}
       <section className="space-y-4">
         {notifications.map((notification) => (
           <div
@@ -94,17 +94,15 @@ function Notification() {
               <div className="flex justify-items-center">
                 {/* Text */}
                 <div>
-                  <h1 className="font-bold lg:text-3xl text-2xl pb-5 lg:pb-5 md:pb-3">
+                  <h1 className="font-bold text-2xl pb-5 lg:pb-5 md:pb-3">
                     {notification.title}
                   </h1>
 
-                  <p className="lg:text-xl md:text-xl sm:text-sm pb-5 lg:pb-5 md:pb-3">
+                  <p className="text-base pb-5 lg:pb-5 md:pb-3">
                     {notification.message}
                   </p>
 
-                  <p className="text-xl text-gray-500">
-                    {notification.date}
-                  </p>
+                  <p className="text-xl text-gray-500">{notification.date}</p>
                 </div>
               </div>
             </div>
@@ -142,6 +140,7 @@ function Notification() {
         )}
       </section>
 
+      <ReadyToTravel />
     </div>
   );
 }
