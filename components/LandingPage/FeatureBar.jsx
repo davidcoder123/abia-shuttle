@@ -53,10 +53,10 @@ export default function FeatureBar() {
 
                 {/* TEXT CONTENT */}
                 <div className="space-y-1">
-                  <h3 className="font-bold text-black text-sm sm:text-base tracking-tight">
+                  <h3 className="font-bold text-black text-lg tracking-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-xs text-slate-900 leading-5">
+                  <p className="text-sm text-slate-900 leading-5">
                     {feature.description}
                   </p>
                 </div>
