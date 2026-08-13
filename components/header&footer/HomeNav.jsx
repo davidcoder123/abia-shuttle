@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch, FiUser, FiBell } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 //icons
 import { IoMdMenu } from "react-icons/io";
@@ -34,27 +34,23 @@ export default function HomeNav() {
         </div>
 
         {/* 2. NAVIGATION LINKS */}
-        <nav className="hidden md:flex items-center space-x-10">
+        <nav className="home-nav hidden md:flex items-center space-x-10">
           {navItems.map((item) => {
-            const isActive = activeTab === item.name;
+             const isActive = activeTab === item.name;
             return (
               <div key={item.name} className="relative py-2">
-                <Link
+                <NavLink
                   to={item.to}
                   onClick={() => setActiveTab(item.name)}
-                  className={`text-base font-medium transition-colors ${
-                    isActive
-                      ? "text-[#FF6200] font-semibold"
-                      : "text-slate-800 hover:text-[#FF6200]"
-                  }`}
+                  className="nav-link text-base font-medium transition-colors text-slate-800 hover:text-[#803100]"
                 >
                   {item.name}
-                </Link>
+                </NavLink>
 
                 {/* Active Orange Underline Indicator */}
-                {isActive && (
+                {/* {isActive && (
                   <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#FF6200] rounded-full" />
-                )}
+                )} */}
               </div>
             );
           })}
@@ -76,16 +72,17 @@ export default function HomeNav() {
             <FiUser className="w-5 h-5 stroke-[2.2]" />
           </button> */}
 
-          <button
-            aria-label="Notifications"
-            onClick={() => navigate("/notifications")}
-            className="text-slate-700 hover:text-[#FF6200] transition-colors cursor-pointer"
-          >
-            <FiBell className="w-5 h-5 stroke-[2.2]" />
-          </button>
+          <NavLink to="/notifications">
+            <button id="notification"
+              aria-label="Notifications"
+              className="text-slate-700 hover:text-[#803100] transition-colors cursor-pointer"
+            >
+              <FiBell className="w-5 h-5 stroke-[2.2]" />
+            </button>
+          </NavLink>
 
           {/* Sign Up Button */}
-          <button className="bg-[#FF6200] hover:bg-[#e05600] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer ml-2">
+          <button className="bg-[#FF6200] hover:bg-[#803100] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer ml-2">
             Log Out
           </button>
         </div>

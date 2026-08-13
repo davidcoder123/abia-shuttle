@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+<<<<<<< HEAD
 .specialDiv{
     @apply flex gap-2 justify-center items-center py-4 lg:px-6 px-2
 }
+=======
+.home-nav a.active,
+a.active #notification {
+  @apply text-[#FF6200] font-semibold relative;
+}
+
+.home-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  display: block;
+  height: 2px;
+  width: 20px;
+  background-color: #FF6200;
+  color: white;
+}
+>>>>>>> dada42f068235c73bfdc4b5598e43272cb27e619

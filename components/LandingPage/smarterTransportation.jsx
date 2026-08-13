@@ -30,15 +30,20 @@ export default function SmarterTransportation() {
     },
   ];
   return (
+<<<<<<< HEAD:components/smarterTransportation.jsx
     <section className="py-6 md:px-16 px-2 text-center">
       <h1 className="md:text-3xl text-xl font-bold">
+=======
+    <section className=" lg:px-35 md:px-20 px-10 text-center py-20">
+      <h1 className="text-3xl font-bold mb-2">
+>>>>>>> dada42f068235c73bfdc4b5598e43272cb27e619:components/LandingPage/smarterTransportation.jsx
         Smarter Transportation For Abia State
       </h1>
-      <p className="md:text-[16px] text-[13px]">
+      <p className="md:text-base text-sm mb-15">
         Safe, reliable, and eco-friendly transportation for everyone
       </p>
 
-      <div className="grid lg:grid-cols-4 grid-cols-2  justify-between lg:gap-4 gap-10 mt-4 md:px-4">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1  justify-between lg:gap-4 gap-10 mt-4 md:px-4">
         {smallDivs.map((p, idx) => (
           <div
             key={idx}
@@ -48,8 +53,8 @@ export default function SmarterTransportation() {
               {p.icon}
             </div>
 
-            <h2 className="font-bold md:text-[24px] text-[18px]">{p.h2}</h2>
-            <p className="md:text-[18px] text-[14px]">{p.p}</p>
+            <h2 className="font-bold text-xl">{p.h2}</h2>
+            <p className="text-base">{p.p}</p>
           </div>
         ))}
       </div>
