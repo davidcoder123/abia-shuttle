@@ -3,9 +3,9 @@ import React from "react";
 export default function ReadyToTravel() {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
-      <div className="bg-[#FF6200] rounded-3xl p-6 sm:p-10 lg:px-14 lg:py-5 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden shadow-lg">
+      <div className="bg-[#FF6200] rounded-3xl p-6 sm:p-10 lg:px-14 lg:py-5 flex flex-col md:flex-row items-start justify-between gap-6 overflow-hidden shadow-lg">
         {/* LEFT TEXT CONTENT */}
-        <div className="w-full md:w-3/5 text-center md:text-left">
+        <div className="w-full md:w-3/5 text-center md:text-left pt-5">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-2 sm:mb-4">
             Ready to travel smarter?
           </h2>

@@ -54,7 +54,7 @@ function Register() {
         alt="bg"
         className="absolute w-[40%] -z-10 md:block hidden top-[20%]"
       />
-      <img src="Ellipsebg2.svg" alt="bg" className="absolute right-0 bottom-[10%] h-[40%]"/>
+      <img src="Ellipsebg2.svg" alt="bg" className="absolute right-0 bottom-[10%] h-[40%] -z-10 hidden md:block"/>
       <div className="flex flex-col items-center mt-15 mb-10">
         <button
           className="border p-1 rounded-full bg-[#ff6200] text-white"
@@ -65,16 +65,16 @@ function Register() {
       </div>
       <section className="lg:w-4/6 md:w-5/6 w-[95%] mx-auto bg-gray-50/30 shadow mb-3 rounded-4xl py-10 md:px-20 px-10 border border-gray-50">
         <div className=" mt-1.5 space-y-2">
-          <h1 className="md:text-center font-bold text-3xl">
+          <h1 className="text-center font-bold text-3xl">
             Create Your Account
           </h1>
-          <p className="md:text-center text-gray-700 mb-8">
+          <p className="text-center text-gray-700 mb-8">
             Join Abia Green Shuttle and enjoy smarter and stress-free travel.
           </p>
         </div>
         <div className="w-full mx-auto">
           <form action="" onSubmit={handleSubmit(SubmitFn)}>
-            <div className="flex flex-col md:flex-row justify-between gap-3 mb-3">
+            <div className="flex flex-col md:flex-row justify-between gap-5 mb-3">
               <div className="w-full md:w-[50%]">
                 <label htmlFor="" className="block">
                   First Name

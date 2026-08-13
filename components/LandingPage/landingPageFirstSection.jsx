@@ -6,8 +6,8 @@ import { IoLogoGooglePlaystore, IoLogoApple } from "react-icons/io5";
 export default function LandingPageFirstSection() {
   return (
     <section className="flex md:flex-row justify-center flex-col md:gap-2 gap-10 pt-10 items-center pb-20 lg:px-20 md:px-10 px-5">
-      <section className="space-y-7 px-8 w-full md:w-[40%]">
-        <div className="bg-amber-500/30 rounded-full w-full md:w-50 px-1 py-1 text-center text-sm text-amber-600 font-semibold">
+      <section className="space-y-7 px-8 w-full md:w-[50%]">
+        <div className="bg-amber-500/30 rounded-full w-2/3 md:w-50 px-1 py-1 text-center text-sm text-amber-600 font-semibold">
           <p>Smart Travels, Better City</p>
         </div>
 

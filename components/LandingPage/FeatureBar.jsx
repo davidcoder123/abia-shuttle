@@ -34,7 +34,7 @@ export default function FeatureBar() {
   ];
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
+    <section className="w-full mx-auto px-6 lg:px-30 md:px-15 my-10">
       <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-6 lg:p-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x divide-slate-200/70">
           {features.map((feature, index) => {

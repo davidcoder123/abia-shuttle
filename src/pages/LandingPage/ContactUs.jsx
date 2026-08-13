@@ -95,10 +95,10 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen bg-[#FDF1EC] px-4 py-12 sm:px-6">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-5xl">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-800 sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-800 sm:text-5xl">
             Contact <span className="text-orange-500">Us</span>
           </h1>
           <p className="mx-auto mt-4 max-w-md text-base font-medium text-neutral-600">
@@ -111,7 +111,7 @@ export default function ContactUs() {
         </div>
 
         {/* Get in touch */}
-        <div className="mt-12">
+        <div className="mt-20">
           <h2 className="text-2xl font-extrabold text-neutral-900">
             Get in Touch
           </h2>
@@ -154,7 +154,7 @@ export default function ContactUs() {
 
             <button
               type="submit"
-              className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF6200] py-4 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-[#803100]"
+              className="mt-1 lg:w-1/2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF6200] py-4 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-[#803100]"
             >
               Send Message
               <Send size={16} />
