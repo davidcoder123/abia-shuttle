@@ -54,6 +54,7 @@ function Register() {
         alt="bg"
         className="absolute w-[40%] -z-10 md:block hidden top-[20%]"
       />
+      <img src="Ellipsebg2.svg" alt="bg" className="absolute right-0 bottom-[10%] h-[40%]"/>
       <div className="flex flex-col items-center mt-15 mb-10">
         <button
           className="border p-1 rounded-full bg-[#ff6200] text-white"
