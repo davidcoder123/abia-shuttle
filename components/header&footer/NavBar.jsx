@@ -46,7 +46,7 @@ export default function NavBar() {
                   className={`text-base font-medium transition-colors ${
                     isActive
                       ? "text-[#FF6200] font-semibold"
-                      : "text-slate-800 hover:text-[#FF6200]"
+                      : "text-slate-800 hover:text-[##803100]"
                   }`}
                 >
                   {item.name}
@@ -65,7 +65,7 @@ export default function NavBar() {
         <div className="hidden md:flex items-center space-x-3">
           <button
             onClick={() => navigate("/home")}
-            className="bg-[#FF6200] hover:bg-[#e05600] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer"
+            className="bg-[#FF6200] hover:bg-[#803100] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer"
           >
             Get Started
           </button>

@@ -77,7 +77,7 @@ function BusSchedule() {
 
   return (
     <section className="">
-      <div className="min-h-[280px] py-5 px-5 md:px-20 w-full bg-[#FF6200]">
+      <div className="min-h-70 py-10 px-5 md:px-35 w-full bg-[#FF6200]">
         <div className="mx-4 sm:mx-6 md:mx-10">
           <div>
             <div className="max-w-md pt-5 sm:pt-6 md:pt-0">
@@ -85,7 +85,7 @@ function BusSchedule() {
                 Bus Schedule
               </h1>
 
-              <p className="font-normal text-[16px] sm:text-[18px] md:text-[20px] text-white">
+              <p className="font-normal text-base text-white">
                 Plan your trip with ease.Find the latest bus schedules across
                 all routes in Abia State.
               </p>
@@ -132,7 +132,7 @@ function BusSchedule() {
               <div className="w-full md:w-auto">
                 <button
                   onClick={handleSearch}
-                  className="flex w-full md:w-auto items-center justify-center rounded-[20px] bg-[#FF6200] px-4 py-3 text-white gap-1 font-medium"
+                  className="flex w-full md:w-auto items-center justify-center rounded-[20px] transition-all duration-300 bg-[#FF6200] hover:bg-[#803100] cursor-pointer px-4 py-3 text-white gap-1 font-medium"
                 >
                   <IoSearch />
                   Search
@@ -143,7 +143,7 @@ function BusSchedule() {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mx-4 sm:mx-6 md:mx-10 my-5 gap-3 py-5 px-5 md:px-20">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mx-4 sm:mx-6 md:mx-10 my-5 gap-3 py-5 px-5 md:px-35">
         <p className="font-medium text-[16px] sm:text-[18px] md:text-[20px] text-[#00000085]">
           10 routes available
         </p>
@@ -161,7 +161,7 @@ function BusSchedule() {
         </div>
       </div>
 
-      <div className="mx-4 sm:mx-6 md:mx-10 my-5 flex flex-col gap-y-8 pb-5 px-5 md:px-20">
+      <div className="mx-4 sm:mx-6 md:mx-10 my-5 flex flex-col gap-y-8 pb-5 px-5 md:px-35">
         {filteredBuses.map((card) => (
           <div
             key={card.id}
@@ -243,7 +243,7 @@ function BusSchedule() {
 
                 <p className="text-sm text-gray-500">{card.text9}</p>
 
-                <button className="bg-[#FF6200] text-white font-semibold px-5 py-3 rounded-xl mt-3 w-full sm:w-auto">
+                <button className=" text-white font-semibold px-5 py-3 rounded-xl mt-3 w-full bg-[#FF6200] hover:bg-[#803100] cursor-pointer sm:w-auto transition-all duration-300">
                   {card.text10}
                 </button>
               </div>
