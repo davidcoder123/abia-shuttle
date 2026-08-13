@@ -118,12 +118,12 @@ const Home = ({ onTrackClick }) => {
   return (
     <div>
       <Hero />
-      {/* <QuickActions />
-      <UpcomingDepartures />
-       */}
+       <QuickActions />
+      {/* <UpcomingDepartures /> */}
+       
       <section className="w-full max-w-6xl mx-auto px-4 my-1">
         <div className="px-4 py-6  lg:p-10 my-2 ">
-          <h1 className="font-bold text-3xl mb-5">Quick Actions</h1>
+          {/* <h1 className="font-bold text-3xl mb-5">Quick Actions</h1>
           <div className="flex flex-col gap-4  lg:flex-row lg:justify-between ">
             {card.map((r, idx) => (
               <div key={idx}
@@ -140,7 +140,7 @@ const Home = ({ onTrackClick }) => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
           {/* route section */}
           <div>
             <div>
