@@ -162,96 +162,102 @@ function BusSchedule() {
       </div>
 
       <div className="mx-4 sm:mx-6 md:mx-10 my-5 flex flex-col gap-y-8 pb-5 px-5 md:px-35">
-        {filteredBuses.map((card) => (
-          <div
-            key={card.id}
-            className="min-h-50 w-full bg-white shadow-[0_0_20px_rgba(0,0,0,0.12)] rounded-[20px] px-4 sm:px-5 py-3"
-          >
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Bus */}
-              <div className="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-2">
-                <FaBus className="text-gray-500 text-sm" />
+        {filteredBuses.length === 0 ? (
+          <p className="px-5 flex justify-center items-center font-bold text-xl text-[#ff6200]">
+            No Route Found.
+          </p>
+        ) : (
+          filteredBuses.map((card) => (
+            <div
+              key={card.id}
+              className="min-h-50 w-full bg-white shadow-[0_0_20px_rgba(0,0,0,0.12)] rounded-[20px] px-4 sm:px-5 py-3"
+            >
+              <div className="flex flex-wrap items-center gap-3">
+                {/* Bus */}
+                <div className="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-2">
+                  <FaBus className="text-gray-500 text-sm" />
 
-                <span className="text-gray-500 text-xs sm:text-sm font-medium">
-                  {card.text}
-                </span>
+                  <span className="text-gray-500 text-xs sm:text-sm font-medium">
+                    {card.text}
+                  </span>
+                </div>
+
+                {/* Date */}
+                <div className="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-2">
+                  <IoCalendarOutline className="text-gray-500 text-sm" />
+
+                  <span className="text-gray-500 text-xs sm:text-sm font-medium">
+                    {card.text2}
+                  </span>
+                </div>
+
+                {card.showPill && (
+                  <div className="bg-[#C61A1A14] flex items-center rounded-full px-2 py-2">
+                    <p className="font-normal text-[12px] text-[#F80909]">
+                      Only 10 left!
+                    </p>
+                  </div>
+                )}
               </div>
 
-              {/* Date */}
-              <div className="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-2">
-                <IoCalendarOutline className="text-gray-500 text-sm" />
+              <div className="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-6 mt-6">
+                {/* DEPARTURE */}
+                <div className="shrink-0">
+                  <p className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold">
+                    {card.text3}
+                  </p>
 
-                <span className="text-gray-500 text-xs sm:text-sm font-medium">
-                  {card.text2}
-                </span>
-              </div>
+                  <p className="font-medium text-[18px] sm:text-[21px] md:text-[24px] text-[#00000085]">
+                    {card.text4}
+                  </p>
 
-              {card.showPill && (
-                <div className="bg-[#C61A1A14] flex items-center rounded-full px-2 py-2">
-                  <p className="font-normal text-[12px] text-[#F80909]">
-                    Only 10 left!
+                  <p className="font-medium text-[14px] sm:text-[15px] md:text-[16px] text-[#34A853] mt-2">
+                    {card.text5}
                   </p>
                 </div>
-              )}
-            </div>
 
-            <div className="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-6 mt-6">
-              {/* DEPARTURE */}
-              <div className="shrink-0">
-                <p className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold">
-                  {card.text3}
-                </p>
+                {/* ROUTE LINE */}
+                <div className="flex-1 flex items-center gap-2 w-full lg:w-auto">
+                  <hr className="flex-1 border-[#FF6200]" />
 
-                <p className="font-medium text-[18px] sm:text-[21px] md:text-[24px] text-[#00000085]">
-                  {card.text4}
-                </p>
+                  <span className="text-[#FF6200]">
+                    <FaArrowRightLong />
+                  </span>
 
-                <p className="font-medium text-[14px] sm:text-[15px] md:text-[16px] text-[#34A853] mt-2">
-                  {card.text5}
-                </p>
-              </div>
+                  <span className="text-[#FF6200]">
+                    <GoDotFill />
+                  </span>
+                </div>
 
-              {/* ROUTE LINE */}
-              <div className="flex-1 flex items-center gap-2 w-full lg:w-auto">
-                <hr className="flex-1 border-[#FF6200]" />
+                {/* ARRIVAL */}
+                <div className="shrink-0">
+                  <p className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold">
+                    {card.text6}
+                  </p>
 
-                <span className="text-[#FF6200]">
-                  <FaArrowRightLong />
-                </span>
+                  <p className="font-medium text-[18px] sm:text-[21px] md:text-[24px] text-[#00000085]">
+                    {card.text7}
+                  </p>
+                </div>
 
-                <span className="text-[#FF6200]">
-                  <GoDotFill />
-                </span>
-              </div>
+                {/* PRICE + BUTTON */}
+                <div className="shrink-0 text-left lg:text-right">
+                  <p className="text-[20px] sm:text-[22px] md:text-[24px] font-semibold text-[#FF6200]">
+                    {card.text8}
+                  </p>
 
-              {/* ARRIVAL */}
-              <div className="shrink-0">
-                <p className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold">
-                  {card.text6}
-                </p>
+                  <p className="text-sm text-gray-500">{card.text9}</p>
 
-                <p className="font-medium text-[18px] sm:text-[21px] md:text-[24px] text-[#00000085]">
-                  {card.text7}
-                </p>
-              </div>
-
-              {/* PRICE + BUTTON */}
-              <div className="shrink-0 text-left lg:text-right">
-                <p className="text-[20px] sm:text-[22px] md:text-[24px] font-semibold text-[#FF6200]">
-                  {card.text8}
-                </p>
-
-                <p className="text-sm text-gray-500">{card.text9}</p>
-
-                <button className=" text-white font-semibold px-5 py-3 rounded-xl mt-3 w-full bg-[#FF6200] hover:bg-[#803100] cursor-pointer sm:w-auto transition-all duration-300">
-                  {card.text10}
-                </button>
+                  <button className=" text-white font-semibold px-5 py-3 rounded-xl mt-3 w-full bg-[#FF6200] hover:bg-[#803100] cursor-pointer sm:w-auto transition-all duration-300">
+                    {card.text10}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
-      <ReadyToTravel/>
+      <ReadyToTravel />
     </section>
   );
 }
