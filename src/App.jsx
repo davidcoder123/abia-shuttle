@@ -14,7 +14,7 @@ import BusSchedule from "./pages/UserPage/BusSchedule";
 import Notification from "./pages/UserPage/Notification";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
 
-
+//router configuration
 const router = createBrowserRouter([
   {
     path: "/",

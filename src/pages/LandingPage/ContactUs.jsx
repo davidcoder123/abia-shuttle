@@ -48,12 +48,12 @@ function InputField({ icon: Icon, placeholder, type = "text" }) {
 
 function InfoCard({ icon: Icon, title, children }) {
   return (
-    <div className="flex-1 min-w-[200px] rounded-2xl border border-neutral-200 bg-white p-5">
+    <div className="flex-1 min-w-50 rounded-2xl border border-neutral-200 bg-white p-5">
       <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-orange-100">
         <Icon size={16} className="text-orange-500" />
       </div>
-      <p className="mb-1 text-sm font-semibold text-neutral-900">{title}</p>
-      <div className="text-xs leading-relaxed text-neutral-500">{children}</div>
+      <p className="mb-1 text-base font-bold text-neutral-900">{title}</p>
+      <div className="text-sm leading-relaxed text-neutral-500">{children}</div>
     </div>
   );
 }
@@ -95,27 +95,27 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen bg-[#FDF1EC] px-4 py-12 sm:px-6">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-5xl">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-800 sm:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-800 sm:text-5xl">
             Contact <span className="text-orange-500">Us</span>
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-sm font-medium text-neutral-600">
+          <p className="mx-auto mt-4 max-w-md text-base font-medium text-neutral-600">
             Have questions about routes, schedule, cards, or partnerships? Reach
             out to our team anytime
           </p>
-          <span className="mt-4 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-xs font-semibold text-orange-500">
+          <span className="mt-4 inline-block rounded-full bg-orange-100 px-4 py-1.5 text-sm font-semibold text-orange-500">
             We are here to help you!
           </span>
         </div>
 
         {/* Get in touch */}
-        <div className="mt-12">
+        <div className="mt-20">
           <h2 className="text-2xl font-extrabold text-neutral-900">
             Get in Touch
           </h2>
-          <p className="mt-1 text-sm font-medium text-neutral-600">
+          <p className="mt-1 text-base font-medium text-neutral-600">
             Send us a message and we'll respond as soon as possible.
           </p>
 
@@ -154,7 +154,7 @@ export default function ContactUs() {
 
             <button
               type="submit"
-              className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 py-4 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
+              className="mt-1 lg:w-1/2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF6200] py-4 text-sm font-semibold text-white transition-colors cursor-pointer hover:bg-[#803100]"
             >
               Send Message
               <Send size={16} />
@@ -211,20 +211,20 @@ export default function ContactUs() {
         {/* CTA banner */}
         <div className="mt-8 flex flex-col items-start justify-between gap-6 rounded-2xl bg-orange-500 p-6 sm:flex-row sm:items-center">
           <div>
-            <p className="text-base font-bold text-white">
+            <p className="text-xl font-bold text-white">
               Need immediate Assistance?
             </p>
-            <p className="mt-1 max-w-md text-xs text-orange-50">
+            <p className="mt-1 max-w-md text-sm text-orange-50">
               Our customer support team is available during working hours to
               help with more information, lost item, and card issues.
             </p>
           </div>
           <div className="flex shrink-0 gap-3">
-            <button className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-orange-500">
+            <button className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-orange-500 cursor-pointer">
               <Phone size={14} />
               Call Now
             </button>
-            <button className="flex items-center gap-2 rounded-full bg-orange-600/40 px-5 py-2.5 text-xs font-semibold text-white ring-1 ring-inset ring-white/40">
+            <button className="flex items-center gap-2 rounded-full bg-orange-600/40 px-5 py-2.5 text-xs font-semibold text-white ring-1 ring-inset ring-white/40 cursor-pointer">
               <MessageCircle size={14} />
               Live Chat
             </button>

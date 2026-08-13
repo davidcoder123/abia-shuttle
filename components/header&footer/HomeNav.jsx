@@ -42,7 +42,7 @@ export default function HomeNav() {
                 <NavLink
                   to={item.to}
                   onClick={() => setActiveTab(item.name)}
-                  className="nav-link text-base font-medium transition-colors text-slate-800 hover:text-[#FF6200]"
+                  className="nav-link text-base font-medium transition-colors text-slate-800 hover:text-[#803100]"
                 >
                   {item.name}
                 </NavLink>
@@ -75,14 +75,14 @@ export default function HomeNav() {
           <NavLink to="/notifications">
             <button id="notification"
               aria-label="Notifications"
-              className="text-slate-700 hover:text-[#FF6200] transition-colors cursor-pointer"
+              className="text-slate-700 hover:text-[#803100] transition-colors cursor-pointer"
             >
               <FiBell className="w-5 h-5 stroke-[2.2]" />
             </button>
           </NavLink>
 
           {/* Sign Up Button */}
-          <button className="bg-[#FF6200] hover:bg-[#e05600] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer ml-2">
+          <button className="bg-[#FF6200] hover:bg-[#803100] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-bl-full rounded-br-full rounded-tl-full shadow-sm transition-all duration-150 cursor-pointer ml-2">
             Log Out
           </button>
         </div>

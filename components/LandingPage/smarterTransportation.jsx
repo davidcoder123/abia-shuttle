@@ -48,8 +48,8 @@ export default function SmarterTransportation() {
               {p.icon}
             </div>
 
-            <h2 className="font-bold md:text-[24px] text-[18px]">{p.h2}</h2>
-            <p className="md:text-[18px] text-[14px]">{p.p}</p>
+            <h2 className="font-bold text-xl">{p.h2}</h2>
+            <p className="text-base">{p.p}</p>
           </div>
         ))}
       </div>
