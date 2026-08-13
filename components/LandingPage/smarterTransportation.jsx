@@ -30,13 +30,8 @@ export default function SmarterTransportation() {
     },
   ];
   return (
-<<<<<<< HEAD:components/smarterTransportation.jsx
-    <section className="py-6 md:px-16 px-2 text-center">
-      <h1 className="md:text-3xl text-xl font-bold">
-=======
     <section className=" lg:px-35 md:px-20 px-10 text-center py-20">
       <h1 className="text-3xl font-bold mb-2">
->>>>>>> dada42f068235c73bfdc4b5598e43272cb27e619:components/LandingPage/smarterTransportation.jsx
         Smarter Transportation For Abia State
       </h1>
       <p className="md:text-base text-sm mb-15">
