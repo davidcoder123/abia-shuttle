@@ -1,10 +1,22 @@
 import React from "react";
-import LandingPageSections from "../../../components/landingPageSections";
+import LandingPageFirstSection from "../../../components/LandingPage/landingPageFirstSection";
+import SmarterTransportation from "../../../components/LandingPage/smarterTransportation";
+import Steps from "../../../components/LandingPage/Steps";
+import LandingPageSectionII from "../../../components/LandingPage/LandingPageSectionII";
+import ImpactSection from "../../../components/LandingPage/ImpactSection";
+import ReadyToTravel from "../../../components/ReadyToTravel";
+import FeatureBar from "../../../components/LandingPage/FeatureBar";
 
 function LandingPage() {
   return (
-    <section className="bg-amber-800">
-      <LandingPageSections />
+    <section>
+      <LandingPageFirstSection />
+      <FeatureBar />
+      <Steps />
+      <SmarterTransportation />
+      <LandingPageSectionII />
+      <ImpactSection />
+      <ReadyToTravel />
     </section>
   );
 }
