@@ -12,6 +12,7 @@ export default function ReadyToTravel() {
           <p className="text-sm sm:text-base lg:text-lg text-white/95 font-medium tracking-wide">
             Join thousands of smart commuters using ABIA GREEN SHUTTLE.
           </p>
+          <div><button></button></div>
         </div>
 
         {/* RIGHT BUS IMAGE */}
