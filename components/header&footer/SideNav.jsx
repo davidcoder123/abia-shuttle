@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   FiGrid,
@@ -18,6 +18,10 @@ import {
 export default function SideNav() {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
+  // Refs to track sidebar and toggle button elements
+  const sidebarRef = useRef(null);
+  const toggleButtonRef = useRef(null);
+
   // Safely retrieve location without crashing if used outside <BrowserRouter>
   let currentPath = "/history";
   try {
@@ -26,6 +30,32 @@ export default function SideNav() {
   } catch (e) {
     // Fallback path
   }
+
+  // Handle clicking outside the sidebar
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // Check if click occurred outside both the sidebar AND the toggle button
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        toggleButtonRef.current &&
+        !toggleButtonRef.current.contains(event.target)
+      ) {
+        setIsCollapsed(true);
+      }
+    }
+
+    // Only attach event listener when the sidebar is open
+    if (!isCollapsed) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isCollapsed]);
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: FiGrid, to: "/home" },
@@ -67,12 +97,21 @@ export default function SideNav() {
 
   return (
     <>
-      {/* FLOATING TOGGLE BUTTON (POSITIONED ON THE LEFT) */}
+      {/* BACKGROUND OVERLAY (Visible when menu is open) */}
+      {!isCollapsed && (
+        <div 
+          aria-hidden="true"
+          className="fixed inset-0 bg-black/20 backdrop-blur-[1px] z-90 transition-opacity"
+        />
+      )}
+
+      {/* FLOATING TOGGLE BUTTON */}
       <button
+        ref={toggleButtonRef}
         onClick={() => setIsCollapsed(!isCollapsed)}
         aria-label={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
         className={`fixed top-4 z-110 w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md hover:bg-slate-50 ${
-          isCollapsed ? "left-4" : "left-56"
+          isCollapsed ? "left-4" : "left-58"
         }`}
       >
         {isCollapsed ? (
@@ -84,6 +123,7 @@ export default function SideNav() {
 
       {/* COLLAPSIBLE SIDEBAR */}
       <aside
+        ref={sidebarRef}
         className={`h-full z-100 bg-white border-r border-slate-200 transition-all duration-300 ease-in-out flex flex-col fixed left-0 top-0 overflow-hidden ${
           isCollapsed ? "w-0 border-none" : "w-64"
         }`}
@@ -105,6 +145,7 @@ export default function SideNav() {
               <Link
                 key={item.id}
                 to={item.to}
+                onClick={() => setIsCollapsed(true)} // Closes sidebar when a link is clicked
                 className={`flex items-center space-x-3.5 rounded-xl px-3.5 py-3 text-sm font-medium transition-all duration-150 whitespace-nowrap ${
                   isActive
                     ? "bg-[#FF6200] text-white shadow-md"
@@ -125,3 +166,5 @@ export default function SideNav() {
     </>
   );
 }
+
+

@@ -13,6 +13,9 @@ import BusRoute from "./pages/UserPage/BusRoute";
 import BusSchedule from "./pages/UserPage/BusSchedule";
 import Notification from "./pages/UserPage/Notification";
 import TransactionHistory from "./pages/UserPage/TransactionHistory";
+import BookTrip from "./pages/UserPage/BookTrip";
+import FundCard from "./pages/UserPage/FundCard";
+import Error404 from "./pages/404/Error404";
 
 //router configuration
 const router = createBrowserRouter([
@@ -37,11 +40,13 @@ const router = createBrowserRouter([
       { path: "schedule", element: <BusSchedule /> },
       { path: "notifications", element: <Notification /> },
       { path: "history", element: <TransactionHistory /> },
+      { path: "book", element: <BookTrip /> },
+      { path: "fund", element: <FundCard /> },
     ],
   },
+  { path: "*", element: <Error404 /> },
 ]);
 function App() {
-  
   return <RouterProvider router={router} />;
 }
 
