@@ -65,13 +65,13 @@ function Register() {
       />
       <div className="flex flex-col items-center mt-15 mb-10">
         <button
-          className="border p-1 rounded-full bg-[#ff6200] text-white"
+          className="border p-1 rounded-full text-white"
           onClick={() => navigate("/")}
         >
           <img
             src="abia-logo.png"
             alt="logo"
-            className="w-15 h-15 rounded-full"
+            className="w-15 h-15 rounded-full border-5 border-[#ff6200]"
           />
         </button>
       </div>
@@ -295,17 +295,17 @@ function Register() {
           <span className="text-gray-500">or</span>
           <div className="flex-1 border-t border-gray-300"></div>
         </div>
-        <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-20 my-2">
+        <div className="flex flex-col lg:flex-row justify-center gap-3 my-5">
           <a
             href="https://www.google.com"
-            className="flex items-center border border-gray-300 shadow rounded-xl px-10 py-2 gap-2"
+            className="flex items-center justify-center border border-gray-300 shadow rounded-xl px-10 py-2 gap-2"
           >
             <FcGoogle className="text-2xl" />
             <span>Sign Up with Google</span>
           </a>
           <a
             href="https://www.apple.com"
-            className="flex items-center border border-gray-300 shadow rounded-xl py-2 px-10 gap-2"
+            className="flex items-center justify-center border border-gray-300 shadow rounded-xl py-2 px-10 gap-2"
           >
             <FaApple className="text-2xl"/>
             <span>Sign Up with Apple</span>

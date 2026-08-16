@@ -85,19 +85,19 @@ function LogIn() {
 
   return (
     <div
-      className="flex justify-center align-middle h-screen bg-cover bg-center bg-no-repeat"
+      className="flex justify-center items-center min-h-screen bg-cover bg-center bg-no-repeat px-2"
       style={{ backgroundImage: `url(${image1})` }}
     >
       <div
-        className="bg-white/20 w-2xl rounded-3xl shadow-2xs 
-         border-gray-600 my-2 lg:h-[97vh] md:h-[80vh] h-[120vh]
+        className="bg-white/30 w-2xl rounded-3xl shadow border-[0.5px] 
+         border-gray-200 my-2 py-5
         "
       >
         <div
-          className="bg-orange-600 w-1/4 flex p-5 mx-auto rounded-2xl 
-        mb-5 mt-5 justify-center items-center "
+          className=" w-auto flex p-5 mx-auto rounded-2xl 
+        mb-5 justify-center items-center "
         >
-          <p className="text-white">LOGO</p>
+          <img src="abia-logo.png" alt="abia logo" className="w-15 h-15 rounded-full border-5 border-[#ff6200]"/>
         </div>
 
         <div className="">
@@ -110,15 +110,16 @@ function LogIn() {
           <p className="text-black flex font-medium items-center justify-center mb-5 mx-auto">
             Sign in to your account to continue
           </p>
-          <form onSubmit={handleSubmit}>
+
+          <form onSubmit={handleSubmit} className="md:px-20 px-5" >
             {/* Phone div */}
-            <div className="relative flex flex-col ">
-              <label className="mb-2 ml-17">Phone Number</label>
+            <div className="relative">
+              <label className=" ml-3 block mb-1">Phone Number</label>
 
               <PhoneCall
                 size={20}
                 strokeWidth={1.5}
-                className="absolute top-12 lg:left-18 left-11 md:left-19"
+                className="absolute top-11 left-3"
               />
               <input
                 type="tel"
@@ -127,25 +128,25 @@ function LogIn() {
                 value={phone}
                 onChange={(e) => handlePhoneChange(e.target.value)}
                 onFocus={() => setphoneError("")}
-                className="pl-7 h-13 rounded-2xl  mx-auto shadow-xl w-4/5 mb-2 border border-gray-300"
+                className="pl-10 h-13 rounded-2xl shadow-xl w-full mb-2 border border-gray-300"
                 placeholder="08031234567"
               />
-              <span className="text-red-600 block mb-3 ml-17">
+              <span className="text-red-600 block mb-3 ml-3">
                 {phoneError}
               </span>
             </div>
             {/* Password div */}
-            <div className="relative flex flex-col">
-              <label className="ml-17 ">Password</label>
+            <div className="relative">
+              <label className="ml-3 block mb-1 ">Password</label>
               <Lock
                 size={20}
                 strokeWidth={1.5}
-                className="absolute top-10 lg:left-18 left-11 md:left-19 "
+                className="absolute top-11 left-3 "
               />
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="  Enter your password"
-                className="pl-7 h-13 rounded-2xl mx-auto shadow-xl w-4/5 mb-1 border border-gray-300 "
+                className="pl-10 h-13 rounded-2xl mx-auto shadow-xl w-full mb-1 border border-gray-300 "
                 value={password}
                 onChange={(event) => handlePasswordChange(event.target.value)}
                 onFocus={handlePasswordFocus}
@@ -154,25 +155,25 @@ function LogIn() {
                 type="button"
                 onClick={togglePasswordVisibility}
                 aria-label={showPassword ? "Hide password" : "Show password"}
-                className="absolute top-11 right-16 lg:right-27 md:right-30 cursor-pointer"
+                className="absolute top-11 right-5 cursor-pointer"
               >
                 {showPassword ? <EyeOff /> : <Eye />}
               </button>
 
-              <span className="text-red-600 block mb-3 ml-17">
+              <span className="text-red-600 block mb-3 ml-3">
                 {passwordError}
               </span>
             </div>
 
-            <div className="flex justify-self-end items-end mr-10 lg:mr-25 md:mr-25  text-red-500">
+            <div className="flex justify-self-end items-end mr-5 text-red-500">
               <Link to="/forgotPassword">Forgot Password?</Link>
             </div>
             {/* sign in div */}
-            <div className=" flex justify-center">
+            <div className="">
               <button
                 type="submit"
-                className="h-13 rounded-2xl shadow-xl w-4/5 text-white md:mt-1 lg:mt-2 
-                     bg-orange-600 hover:bg-amber-900"
+                className="h-13 rounded-2xl shadow-xl w-full text-white md:mt-1 lg:mt-2 
+                     bg-[#ff6200] cursor-pointer hover:bg-amber-900"
               >
                 Sign In
               </button>
@@ -188,19 +189,19 @@ function LogIn() {
           </div>
 
           <div className="relative -mt-2 mb-3  flex justify-center">
-            <button className="pl-7 h-13 rounded-2xl  mx-10 shadow-xl w-4/5  border border-gray-300">
+            <button className="pl-7 h-13 flex items-center gap-1 cursor-pointer justify-center rounded-2xl  mx-10 shadow-xl w-4/5  border border-gray-300">
               <FcGoogle
                 size={20}
-                strokeWidth={1.5}
-                className="absolute top-5 lg:left-50 md:left-50  "
+                strokeWidth={0}
+                className="text-2xl"
               />
-              <p className="font-semibold">Continue with Google</p>
+              <p className="">Continue with Google</p>
             </button>
           </div>
 
           <div className="">
             <p className="flex items-center justify-center gap-2 lg:mt-3 md:mt-8 ">
-              Don't have an account?{" "}
+              Don't have an account?
               <span className="text-orange-600">
                 <Link to="/signup">Sign Up </Link>
               </span>
