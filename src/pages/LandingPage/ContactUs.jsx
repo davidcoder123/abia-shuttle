@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import ReadyToTravel from "../../../components/ReadyToTravel";
+import ScrollToTop from "../../../components/to-top/ScrollToTop";
 
 const faqs = [
   {
@@ -231,6 +232,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
+      <ScrollToTop />
       <ReadyToTravel />
     </div>
   );

@@ -85,7 +85,7 @@ function LogIn() {
 
   return (
     <div
-      className="flex justify-center items-center min-h-screen bg-cover bg-center bg-no-repeat px-2"
+      className="flex justify-center items-center min-h-screen py-20 bg-cover bg-center bg-no-repeat px-2"
       style={{ backgroundImage: `url(${image1})` }}
     >
       <div
