@@ -11,7 +11,7 @@ export default function LandingPageFirstSection() {
           <p>Smart Travels, Better City</p>
         </div>
 
-        <h1 className="text-5xl font-bold flex flex-col gap-4">
+        <h1 className="text-5xl font-bold flex flex-col gap-2">
           Your Journey, <span className="text-orange-500">Simplified.</span>
         </h1>
 
@@ -56,7 +56,7 @@ export default function LandingPageFirstSection() {
         </div>
       </section>
 
-      <section className="w-full md:w-[45%]">
+      <section className="w-full md:w-[50%]">
         <img src="/heroImage2.svg" alt="" className="w-full" />
       </section>
     </section>

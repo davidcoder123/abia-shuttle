@@ -95,7 +95,7 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen bg-[#FDF1EC] px-4 py-12 sm:px-6">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto lg:max-w-5xl md:max-w-3xl">
         {/* Header */}
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight text-neutral-800 sm:text-5xl">
