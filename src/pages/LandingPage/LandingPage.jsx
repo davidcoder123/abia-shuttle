@@ -7,6 +7,7 @@ import ImpactSection from "../../../components/LandingPage/ImpactSection";
 import ReadyToTravel from "../../../components/ReadyToTravel";
 import FeatureBar from "../../../components/LandingPage/FeatureBar";
 import ScrollToTop from "../../../components/to-top/ScrollToTop";
+import Call from "../../Components/Call";
 
 function LandingPage() {
   return (
@@ -18,6 +19,7 @@ function LandingPage() {
       <LandingPageSectionII />
       <ImpactSection />
       <ReadyToTravel />
+      <Call />
       <ScrollToTop />
     </section>
   );
