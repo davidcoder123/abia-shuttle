@@ -6,6 +6,7 @@ import { FaBus, FaCheck, FaLeaf, FaRoute, FaUsers } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { RiShieldStarLine } from "react-icons/ri";
 import ReadyToTravel from "../../../components/ReadyToTravel";
+import ScrollToTop from "../../../components/to-top/ScrollToTop";
 
 // Mission,  Vission & values
 
@@ -19,7 +20,7 @@ const Mvc = [
   },
   {
     id: 2,
-    title: "Vission",
+    title: "Vision",
     icon: <BsEye />,
     description:
       "To create a smarter, more connected public transportation ecosystem where every commuter in Abia state can travel with confidence, convenience, and real-time access to essential transport services.",
@@ -316,18 +317,7 @@ function AboutUs() {
         </div>
       </section>
       <ReadyToTravel />
-
-      {/* <div className='bg-[#ff6200] flex flex-col md:flex-row justify-between text-white px-6 md:px-11 py-6 md:py-5 rounded-2xl'>
-
-      <div className='md:text-left text-center'>
-        <h1 className='text-2xl font-bold mb-4 md:mb-9'>Ready to travel smarter?</h1>
-        <p className='text-sm '>Join thousands of smart commuters using ABIA GREEN SHUTTLE.</p>
-      </div>
-      <div className='mt-6 md:mt-0'>
-        <img src="/image 7.png" alt="green shuttle" 
-        className=' w-48 md:w-64 lg:w-72 h-auto '/>
-      </div>
-    </div> */}
+      <ScrollToTop />
     </>
   );
 }

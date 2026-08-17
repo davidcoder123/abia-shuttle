@@ -6,6 +6,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 
+//icon
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
+
 const schema = z
   .object({
     firstName: z.string().min(1, "First Name is required"),
@@ -54,13 +58,21 @@ function Register() {
         alt="bg"
         className="absolute w-[40%] -z-10 md:block hidden top-[20%]"
       />
-      <img src="Ellipsebg2.svg" alt="bg" className="absolute right-0 bottom-[10%] h-[40%] -z-10 hidden md:block"/>
+      <img
+        src="Ellipsebg2.svg"
+        alt="bg"
+        className="absolute right-0 bottom-[10%] h-[40%] -z-10 hidden md:block"
+      />
       <div className="flex flex-col items-center mt-15 mb-10">
         <button
-          className="border p-1 rounded-full bg-[#ff6200] text-white"
+          className="border p-1 rounded-full text-white"
           onClick={() => navigate("/")}
         >
-          <img src="abia-logo.png" alt="logo" className="w-15 h-15 rounded-full"/>
+          <img
+            src="abia-logo.png"
+            alt="logo"
+            className="w-15 h-15 rounded-full border-5 border-[#ff6200]"
+          />
         </button>
       </div>
       <section className="lg:w-4/6 md:w-5/6 w-[95%] mx-auto bg-gray-50/30 shadow mb-3 rounded-4xl py-10 md:px-20 px-10 border border-gray-50">
@@ -283,19 +295,19 @@ function Register() {
           <span className="text-gray-500">or</span>
           <div className="flex-1 border-t border-gray-300"></div>
         </div>
-        <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-20 my-2">
+        <div className="flex flex-col lg:flex-row justify-center gap-3 my-5">
           <a
             href="https://www.google.com"
-            className="flex items-center border border-gray-300 shadow rounded-xl px-10 py-2 gap-2"
+            className="flex items-center justify-center border border-gray-300 shadow rounded-xl px-10 py-2 gap-2"
           >
-            <img src="google.webp" alt="Google" className="h-8 w-12" />
+            <FcGoogle className="text-2xl" />
             <span>Sign Up with Google</span>
           </a>
           <a
             href="https://www.apple.com"
-            className="flex items-center border border-gray-300 shadow rounded-xl py-2 px-10 gap-2"
+            className="flex items-center justify-center border border-gray-300 shadow rounded-xl py-2 px-10 gap-2"
           >
-            <img src="apple.jpg" alt="Apple" className="h-8 w-12" />
+            <FaApple className="text-2xl"/>
             <span>Sign Up with Apple</span>
           </a>
         </div>

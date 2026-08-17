@@ -16,6 +16,8 @@ import TransactionHistory from "./pages/UserPage/TransactionHistory";
 import BookTrip from "./pages/UserPage/BookTrip";
 import FundCard from "./pages/UserPage/FundCard";
 import Error404 from "./pages/404/Error404";
+import ForgotPassword from "./pages/LandingPage/ForgotPassword";
+import HelpCenter from "./pages/UserPage/HelpCenter";
 
 //router configuration
 const router = createBrowserRouter([
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
       { path: "contact", element: <ContactUs /> },
       { path: "signup", element: <Register /> },
       { path: "login", element: <Login /> },
+      { path: "login", element: <Login /> },
+      { path: "forgotpassword", element: <ForgotPassword /> },
     ],
   },
   {
@@ -42,6 +46,7 @@ const router = createBrowserRouter([
       { path: "history", element: <TransactionHistory /> },
       { path: "book", element: <BookTrip /> },
       { path: "fund", element: <FundCard /> },
+      { path: "help-center", element: <HelpCenter /> },
     ],
   },
   { path: "*", element: <Error404 /> },
