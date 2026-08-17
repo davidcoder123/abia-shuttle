@@ -34,3 +34,23 @@ a.active #notification {
 .testimonial-track {
   animation: testimonial-scroll 18s linear infinite;
 }
+
+/* printing */
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-receipt,
+  #printable-receipt * {
+    visibility: visible;
+  }
+  #printable-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: 1px solid #000 !important;
+    background: white !important;
+  }
+}

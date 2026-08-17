@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 
+// Helper function to generate GSB + 8-character random code
+const generateBookingRef = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let randomCode = '';
+  for (let i = 0; i < 8; i++) {
+    randomCode += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return `GSB-${randomCode}`;
+};
+
 // Mock route & bus data
 const ROUTES = [
   { id: '1', origin: 'Umuahia Terminal', destination: 'Aba Central Park' },
@@ -41,25 +51,31 @@ const BUSES = [
 ];
 
 export default function ShuttleBooking() {
-  const [step, setStep] = useState(1);
+  const getTodayString = () => new Date().toISOString().split('T')[0];
   
-  // Booking Form State
+  const getTomorrowString = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow.toISOString().split('T')[0];
+  };
+
+  const todayStr = getTodayString();
+  const tomorrowStr = getTomorrowString();
+
+  const [step, setStep] = useState(1);
   const [selectedRoute, setSelectedRoute] = useState('');
-  const [travelDate, setTravelDate] = useState('');
+  const [travelDate, setTravelDate] = useState(todayStr);
   const [seatCount, setSeatCount] = useState(1);
   const [selectedBus, setSelectedBus] = useState(null);
   
-  // Array of passengers based on seat count
   const [passengers, setPassengers] = useState([{ name: '', phone: '' }]);
   const [contactEmail, setContactEmail] = useState('');
   
   const [bookingRef, setBookingRef] = useState('');
   const [isPaid, setIsPaid] = useState(false);
 
-  // Filter available buses based on selected route
   const availableBuses = BUSES.filter((bus) => bus.routeId === selectedRoute);
 
-  // Sync passengers array length when seat count changes
   const handleSeatCountChange = (count) => {
     const numSeats = Math.max(1, Math.min(6, parseInt(count) || 1));
     setSeatCount(numSeats);
@@ -85,7 +101,6 @@ export default function ShuttleBooking() {
     });
   };
 
-  // Validation helper for step header navigation
   const canNavigateTo = (targetStep) => {
     if (targetStep === 1) return true;
     if (targetStep === 2) return Boolean(selectedRoute && travelDate && seatCount > 0);
@@ -121,16 +136,15 @@ export default function ShuttleBooking() {
   const handleProcessPayment = (e) => {
     e.preventDefault();
     
-    // Validate all passenger fields
     const missingDetails = passengers.some((p) => !p.name.trim() || !p.phone.trim());
     if (missingDetails) {
       alert('Please fill in the required details for all passengers.');
       return;
     }
     
-    // Simulate payment & ref generation
-    const randomRef = 'ABS-' + Math.floor(100000 + Math.random() * 900000);
-    setBookingRef(randomRef);
+    // Generate unique code (e.g., GSB-8X9K2P1L)
+    const newRef = generateBookingRef();
+    setBookingRef(newRef);
     setIsPaid(true);
     setStep(4);
   };
@@ -142,7 +156,7 @@ export default function ShuttleBooking() {
   const resetBooking = () => {
     setStep(1);
     setSelectedRoute('');
-    setTravelDate('');
+    setTravelDate(todayStr);
     setSeatCount(1);
     setSelectedBus(null);
     setPassengers([{ name: '', phone: '' }]);
@@ -158,31 +172,26 @@ export default function ShuttleBooking() {
       <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
         
         {/* Header Banner */}
-        <div className="bg-blue-700 text-white p-6 print:hidden">
+        <div className="bg-[#ff6200] text-white p-6 print:hidden">
           <h1 className="text-2xl font-bold">Abia Shuttle Express</h1>
-          <p className="text-blue-100 text-sm">Fast, reliable, and secure online seat reservation</p>
+          <p className="text-orange-100 text-sm">Fast, reliable, and secure online seat reservation</p>
           
-          {/* Step Navigation Header */}
-          <div className="flex items-center justify-between mt-6 text-xs font-semibold text-blue-200">
+          <div className="flex items-center justify-between mt-6 text-xs font-semibold text-orange-200">
             <button
               type="button"
               onClick={() => handleStepClick(1)}
-              className={`transition-all ${
-                step === 1
-                  ? 'text-white font-bold underline scale-105'
-                  : 'hover:text-white cursor-pointer'
+              className={`transition-all duration-200 ${
+                step === 1 ? 'text-white font-bold underline scale-105' : 'hover:text-white cursor-pointer'
               }`}
             >
               1. Route
             </button>
-
             <span>→</span>
-
             <button
               type="button"
               disabled={!canNavigateTo(2)}
               onClick={() => handleStepClick(2)}
-              className={`transition-all ${
+              className={`transition-all duration-200 ${
                 step === 2
                   ? 'text-white font-bold underline scale-105'
                   : canNavigateTo(2)
@@ -192,14 +201,12 @@ export default function ShuttleBooking() {
             >
               2. Bus
             </button>
-
             <span>→</span>
-
             <button
               type="button"
               disabled={!canNavigateTo(3)}
               onClick={() => handleStepClick(3)}
-              className={`transition-all ${
+              className={`transition-all duration-200 ${
                 step === 3
                   ? 'text-white font-bold underline scale-105'
                   : canNavigateTo(3)
@@ -209,14 +216,12 @@ export default function ShuttleBooking() {
             >
               3. Details
             </button>
-
             <span>→</span>
-
             <button
               type="button"
               disabled={!canNavigateTo(4)}
               onClick={() => handleStepClick(4)}
-              className={`transition-all ${
+              className={`transition-all duration-200 ${
                 step === 4
                   ? 'text-white font-bold underline scale-105'
                   : canNavigateTo(4)
@@ -240,7 +245,7 @@ export default function ShuttleBooking() {
                 <select
                   value={selectedRoute}
                   onChange={(e) => setSelectedRoute(e.target.value)}
-                  className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#ff6200] outline-none transition-all duration-200"
                   required
                 >
                   <option value="">-- Choose Departure & Destination --</option>
@@ -258,11 +263,13 @@ export default function ShuttleBooking() {
                   <input
                     type="date"
                     value={travelDate}
-                    min={new Date().toISOString().split('T')[0]}
+                    min={todayStr}
+                    max={tomorrowStr}
                     onChange={(e) => setTravelDate(e.target.value)}
-                    className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#ff6200] outline-none transition-all duration-200"
                     required
                   />
+                  <p className="text-[11px] text-slate-500 mt-1">Bookings are open for today and tomorrow only.</p>
                 </div>
 
                 <div>
@@ -270,7 +277,7 @@ export default function ShuttleBooking() {
                   <select
                     value={seatCount}
                     onChange={(e) => handleSeatCountChange(e.target.value)}
-                    className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#ff6200] outline-none transition-all duration-200"
                   >
                     {[1, 2, 3, 4, 5, 6].map((num) => (
                       <option key={num} value={num}>
@@ -283,7 +290,7 @@ export default function ShuttleBooking() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition mt-2"
+                className="w-full bg-[#ff6200] text-white py-3 rounded-lg font-semibold hover:bg-[#803100] transition-colors duration-200 mt-2"
               >
                 Find Available Buses
               </button>
@@ -297,7 +304,7 @@ export default function ShuttleBooking() {
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+                  className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-[#ff6200] transition-colors duration-200"
                 >
                   <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -307,9 +314,9 @@ export default function ShuttleBooking() {
                 <h2 className="text-lg font-bold text-slate-800">Available Buses</h2>
               </div>
 
-              <div className="bg-slate-100 p-3 rounded-lg text-xs md:text-sm text-slate-600 flex justify-between items-center">
+              <div className="bg-orange-50/60 border border-orange-100 p-3 rounded-lg text-xs md:text-sm text-slate-600 flex justify-between items-center">
                 <span>Route: <strong>{routeObj?.origin} → {routeObj?.destination}</strong></span>
-                <span>Seats Needed: <strong className="text-blue-700">{seatCount}</strong></span>
+                <span>Seats Needed: <strong className="text-[#ff6200]">{seatCount}</strong></span>
               </div>
 
               {availableBuses.length === 0 ? (
@@ -323,14 +330,14 @@ export default function ShuttleBooking() {
                     return (
                       <div
                         key={bus.id}
-                        className={`border rounded-lg p-4 flex flex-col md:flex-row justify-between md:items-center gap-3 transition ${
-                          hasCapacity ? 'border-slate-200 hover:border-blue-400' : 'border-red-200 bg-red-50/30 opacity-75'
+                        className={`border rounded-lg p-4 flex flex-col md:flex-row justify-between md:items-center gap-3 transition-colors duration-200 ${
+                          hasCapacity ? 'border-slate-200 hover:border-[#ff6200]' : 'border-red-200 bg-red-50/30 opacity-75'
                         }`}
                       >
                         <div>
                           <div className="font-bold text-slate-800">{bus.operator}</div>
                           <div className="text-xs text-slate-500">{bus.type} • {bus.busNumber}</div>
-                          <div className="text-sm text-blue-600 font-semibold mt-1">
+                          <div className="text-sm text-[#ff6200] font-semibold mt-1">
                             Departs: {bus.departureTime}
                           </div>
                         </div>
@@ -347,9 +354,9 @@ export default function ShuttleBooking() {
                           <button
                             onClick={() => handleSelectBus(bus)}
                             disabled={!hasCapacity}
-                            className={`px-4 py-2 rounded-md text-sm font-semibold transition ${
+                            className={`px-4 py-2 rounded-md text-sm font-semibold transition-colors duration-200 ${
                               hasCapacity
-                                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                                ? 'bg-[#ff6200] text-white hover:bg-[#803100]'
                                 : 'bg-slate-300 text-slate-500 cursor-not-allowed'
                             }`}
                           >
@@ -371,7 +378,7 @@ export default function ShuttleBooking() {
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-blue-600 transition"
+                  className="inline-flex items-center text-sm font-medium text-slate-600 hover:text-[#ff6200] transition-colors duration-200"
                 >
                   <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -381,20 +388,18 @@ export default function ShuttleBooking() {
                 <h2 className="text-lg font-bold text-slate-800">Passenger Details</h2>
               </div>
 
-              {/* Trip Summary Card */}
-              <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg text-sm space-y-1">
+              <div className="bg-orange-50 border border-orange-200 p-4 rounded-lg text-sm space-y-1">
                 <div className="flex justify-between">
                   <span><strong>Trip:</strong> {routeObj?.origin} → {routeObj?.destination}</span>
                   <span><strong>Date:</strong> {travelDate}</span>
                 </div>
                 <div><strong>Bus:</strong> {selectedBus.operator} ({selectedBus.departureTime})</div>
-                <div className="flex justify-between items-center pt-2 border-t border-blue-200 mt-2">
+                <div className="flex justify-between items-center pt-2 border-t border-orange-200 mt-2">
                   <span>Fare: ₦{selectedBus.price.toLocaleString()} × {seatCount} seat(s)</span>
-                  <span className="text-base text-blue-800 font-bold">Total: ₦{totalFare.toLocaleString()}</span>
+                  <span className="text-base text-[#803100] font-bold">Total: ₦{totalFare.toLocaleString()}</span>
                 </div>
               </div>
 
-              {/* Dynamic Passenger Input Forms */}
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-slate-700 uppercase tracking-wide">
                   Passenger Information ({seatCount})
@@ -402,7 +407,7 @@ export default function ShuttleBooking() {
 
                 {passengers.map((p, idx) => (
                   <div key={idx} className="p-4 border border-slate-200 rounded-lg bg-slate-50/50 space-y-3">
-                    <div className="text-xs font-semibold text-blue-700 uppercase">
+                    <div className="text-xs font-semibold text-[#ff6200] uppercase">
                       Passenger {idx + 1} {idx === 0 ? '(Primary Contact)' : ''}
                     </div>
                     
@@ -414,7 +419,7 @@ export default function ShuttleBooking() {
                           required
                           value={p.name}
                           onChange={(e) => handlePassengerChange(idx, 'name', e.target.value)}
-                          className="w-full p-2.5 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm"
+                          className="w-full p-2.5 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#ff6200] outline-none text-sm transition-all duration-200"
                           placeholder="e.g. Chukwuemeka Obi"
                         />
                       </div>
@@ -426,7 +431,7 @@ export default function ShuttleBooking() {
                           required
                           value={p.phone}
                           onChange={(e) => handlePassengerChange(idx, 'phone', e.target.value)}
-                          className="w-full p-2.5 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm"
+                          className="w-full p-2.5 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#ff6200] outline-none text-sm transition-all duration-200"
                           placeholder="08012345678"
                         />
                       </div>
@@ -440,7 +445,7 @@ export default function ShuttleBooking() {
                     type="email"
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
-                    className="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm"
+                    className="w-full p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#ff6200] outline-none text-sm transition-all duration-200"
                     placeholder="receipts@example.com"
                   />
                 </div>
@@ -449,7 +454,7 @@ export default function ShuttleBooking() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition"
+                  className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors duration-200"
                 >
                   Pay ₦{totalFare.toLocaleString()} & Confirm Booking
                 </button>
@@ -489,11 +494,10 @@ export default function ShuttleBooking() {
                   </div>
                   <div>
                     <p className="text-xs text-slate-500">Seats Reserved</p>
-                    <p className="font-bold text-blue-700">{seatCount} Seat(s)</p>
+                    <p className="font-bold text-[#ff6200]">{seatCount} Seat(s)</p>
                   </div>
                 </div>
 
-                {/* Passenger Manifest Table */}
                 <div>
                   <p className="text-xs font-bold text-slate-600 uppercase mb-2">Passenger Manifest</p>
                   <div className="space-y-1.5">
@@ -511,7 +515,6 @@ export default function ShuttleBooking() {
                   <span className="text-emerald-700 text-base">₦{totalFare.toLocaleString()}</span>
                 </div>
 
-                {/* QR Code Validation */}
                 <div className="flex items-center justify-between pt-4 border-t border-slate-200">
                   <div className="text-xs text-slate-500">
                     Present this ticket or Ref <strong>{bookingRef}</strong> at the park loading bay.
@@ -522,17 +525,16 @@ export default function ShuttleBooking() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 print:hidden">
                 <button
                   onClick={handlePrint}
-                  className="flex-1 bg-slate-800 text-white py-2.5 rounded-lg font-semibold hover:bg-slate-900 transition"
+                  className="flex-1 bg-slate-800 text-white py-2.5 rounded-lg font-semibold hover:bg-slate-900 transition-colors duration-200"
                 >
                   Print / Save Receipt
                 </button>
                 <button
                   onClick={resetBooking}
-                  className="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg font-semibold hover:bg-slate-100 transition"
+                  className="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg font-semibold hover:bg-slate-100 transition-colors duration-200"
                 >
                   Book Another Ride
                 </button>

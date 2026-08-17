@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       { path: "notifications", element: <Notification /> },
       { path: "history", element: <TransactionHistory /> },
       { path: "book", element: <BookTrip /> },
-      { path: "fund", element: <FundCard /> },
+      { path: "fund-load", element: <FundCard /> },
       { path: "help-center", element: <HelpCenter /> },
       { path: "settings", element: <Setting /> },
     ],
