@@ -20,7 +20,7 @@ const Mvc = [
   },
   {
     id: 2,
-    title: "Vission",
+    title: "Vision",
     icon: <BsEye />,
     description:
       "To create a smarter, more connected public transportation ecosystem where every commuter in Abia state can travel with confidence, convenience, and real-time access to essential transport services.",
