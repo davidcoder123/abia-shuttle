@@ -18,6 +18,7 @@ import FundCard from "./pages/UserPage/FundCard";
 import Error404 from "./pages/404/Error404";
 import ForgotPassword from "./pages/LandingPage/ForgotPassword";
 import HelpCenter from "./pages/UserPage/HelpCenter";
+import Setting from "./pages/UserPage/Setting";
 
 //router configuration
 const router = createBrowserRouter([
@@ -45,8 +46,9 @@ const router = createBrowserRouter([
       { path: "notifications", element: <Notification /> },
       { path: "history", element: <TransactionHistory /> },
       { path: "book", element: <BookTrip /> },
-      { path: "fund", element: <FundCard /> },
+      { path: "fund-load", element: <FundCard /> },
       { path: "help-center", element: <HelpCenter /> },
+      { path: "settings", element: <Setting /> },
     ],
   },
   { path: "*", element: <Error404 /> },

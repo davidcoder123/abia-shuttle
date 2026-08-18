@@ -67,11 +67,18 @@ export default function SideNav() {
       to: "/fund-load",
     },
     {
+      id: "Book",
+      label: "Book",
+      icon: FiCalendar,
+      to: "/book",
+    },
+    {
       id: "bus-schedule",
       label: "Bus Schedule",
       icon: FiCalendar,
       to: "/schedule",
     },
+
     { id: "routes", label: "Routes", icon: FiTruck, to: "/routes" },
     {
       id: "transactions",
@@ -99,7 +106,7 @@ export default function SideNav() {
     <>
       {/* BACKGROUND OVERLAY (Visible when menu is open) */}
       {!isCollapsed && (
-        <div 
+        <div
           aria-hidden="true"
           className="fixed inset-0 bg-black/20 backdrop-blur-[1px] z-90 transition-opacity"
         />
@@ -166,5 +173,3 @@ export default function SideNav() {
     </>
   );
 }
-
-
