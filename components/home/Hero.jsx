@@ -1,10 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { supabase } from "../../src/utils/supabase";
 
 export default function Hero() {
-  const [userName] = useState("John Adebayo Ojo");
+  const [userName, setUserName] = useState("Loading...");
   const [profileImage, setProfileImage] = useState(null);
   const [showBalance, setShowBalance] = useState(true); // State to toggle balance visibility
+  const [balance, setBalance] = useState(0); // State for user balance
+
+  useEffect(() => {
+    async function fetchUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        // Fetch the user's profile to get their balance
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("balance")
+          .eq("id", user.id)
+          .single();
+          
+        if (profile && profile.balance !== null) {
+          setBalance(profile.balance);
+        }
+
+        if (user.user_metadata) {
+          const firstName = user.user_metadata.first_name || "";
+          const lastName = user.user_metadata.last_name || "";
+          setUserName(`${firstName} ${lastName}`.trim() || "Account Holder");
+        }
+      } else {
+        setUserName("Guest User");
+      }
+    }
+    fetchUser();
+  }, []);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -69,7 +98,9 @@ export default function Hero() {
             <div className="text-sm opacity-90 mb-1">Current Balance</div>
             <div className="flex items-center gap-3">
               <span className="text-3xl font-bold">
-                {showBalance ? "₦2,000.00" : "₦••••••••"}
+                {showBalance 
+                  ? `₦${balance.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` 
+                  : "₦••••••••"}
               </span>
               <button
                 onClick={() => setShowBalance(!showBalance)}

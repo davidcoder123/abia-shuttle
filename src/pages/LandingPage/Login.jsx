@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import image1 from '../../assets/bgimg.jpeg'
+import image1 from "../../assets/bgimg.jpeg";
 import { Eye, EyeOff, Lock, PhoneCall } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../../utils/supabase";
 
 function LogIn() {
+  const navigate = useNavigate();
   const [phone, setPhone] = useState("");
   const [phoneError, setphoneError] = useState("");
 
@@ -20,9 +22,9 @@ function LogIn() {
     if (value.length < 6) {
       return "Password must be at least 6 characters.";
     }
-    if (!/[A-Za-z]/.test(value)) {
-      return "Password must contain a letter.";
-    }
+    // if (!/[A-Za-z]/.test(value)) {
+    //   return "Password must contain a letter.";
+    // }
     if (!/[0-9]/.test(value)) {
       return "Password must contain a number.";
     }
@@ -54,7 +56,7 @@ function LogIn() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let valid = true;
@@ -79,8 +81,30 @@ function LogIn() {
       return;
     }
 
-    // form is valid; handle submit here
-    console.log("Sign in", { phone, password });
+    // 1. Look up the email associated with this phone number
+    const { data: email, error: rpcError } = await supabase.rpc(
+      "get_email_by_phone",
+      { p_phone: phone },
+    );
+
+    if (rpcError || !email) {
+      setPasswordError("Invalid phone number or password.");
+      return;
+    }
+
+    // 2. Sign in with the retrieved email and the entered password
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      setPasswordError(error.message);
+      return;
+    }
+
+    console.log("Signed in successfully:", data);
+    navigate("/home");
   };
 
   return (
@@ -97,7 +121,11 @@ function LogIn() {
           className=" w-auto flex p-5 mx-auto rounded-2xl 
         mb-5 justify-center items-center "
         >
-          <img src="abia-logo.png" alt="abia logo" className="w-15 h-15 rounded-full border-5 border-[#ff6200]"/>
+          <img
+            src="abia-logo.png"
+            alt="abia logo"
+            className="w-15 h-15 rounded-full border-5 border-[#ff6200]"
+          />
         </div>
 
         <div className="">
@@ -111,7 +139,7 @@ function LogIn() {
             Sign in to your account to continue
           </p>
 
-          <form onSubmit={handleSubmit} className="md:px-20 px-5" >
+          <form onSubmit={handleSubmit} className="md:px-20 px-5">
             {/* Phone div */}
             <div className="relative">
               <label className=" ml-3 block mb-1">Phone Number</label>
@@ -131,9 +159,7 @@ function LogIn() {
                 className="pl-10 h-13 rounded-2xl shadow-xl w-full mb-2 border border-gray-300"
                 placeholder="08031234567"
               />
-              <span className="text-red-600 block mb-3 ml-3">
-                {phoneError}
-              </span>
+              <span className="text-red-600 block mb-3 ml-3">{phoneError}</span>
             </div>
             {/* Password div */}
             <div className="relative">
@@ -190,11 +216,7 @@ function LogIn() {
 
           <div className="relative -mt-2 mb-3  flex justify-center">
             <button className="pl-7 h-13 flex items-center gap-1 cursor-pointer justify-center rounded-2xl  mx-10 shadow-xl w-4/5  border border-gray-300">
-              <FcGoogle
-                size={20}
-                strokeWidth={0}
-                className="text-2xl"
-              />
+              <FcGoogle size={20} strokeWidth={0} className="text-2xl" />
               <p className="">Continue with Google</p>
             </button>
           </div>

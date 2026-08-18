@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { supabase } from "../../utils/supabase";
 
 //icon
 import { FcGoogle } from "react-icons/fc";
@@ -36,6 +37,7 @@ function Register() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [authError, setAuthError] = useState("");
   const {
     register,
     reset,
@@ -45,8 +47,31 @@ function Register() {
     resolver: zodResolver(schema),
   });
 
-  const SubmitFn = (data) => {
-    console.log(data);
+  const SubmitFn = async (data) => {
+    setAuthError("");
+    
+    // Sign up with Supabase using email and password,
+    // and pass the rest of the fields as user metadata.
+    const { data: authData, error } = await supabase.auth.signUp({
+      email: data.email,
+      password: data.password,
+      options: {
+        data: {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          phone: data.phone,
+          date_of_birth: data.dateOfBirth,
+          gender: data.gender,
+        },
+      },
+    });
+
+    if (error) {
+      setAuthError(error.message);
+      return;
+    }
+
+    console.log("Registered:", authData);
     reset();
     navigate("/login");
   };
@@ -280,6 +305,12 @@ function Register() {
             </div>
             {errors.terms && (
               <p className="text-red-700 text-sm">{errors.terms.message} </p>
+            )}
+
+            {authError && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-3" role="alert">
+                <span className="block sm:inline">{authError}</span>
+              </div>
             )}
 
             <button
