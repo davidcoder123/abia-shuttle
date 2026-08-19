@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   CreditCard,
   History,
@@ -9,6 +9,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "../../src/utils/supabase";
 
 const quickActions = [
   {
@@ -223,6 +224,25 @@ function QuickActionsPanel() {
 
 export default function CardBalancePanel() {
   const navigate = useNavigate();
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    async function fetchUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("balance")
+          .eq("id", user.id)
+          .single();
+          
+        if (profile && profile.balance !== null) {
+          setBalance(profile.balance);
+        }
+      }
+    }
+    fetchUser();
+  }, []);
 
   return (
     <div className="bg-orange-50 p-3 sm:p-6">
@@ -236,7 +256,7 @@ export default function CardBalancePanel() {
                 Card Balance
               </p>
               <p className="text-white text-2xl sm:text-4xl font-bold mt-1 sm:mt-2">
-                ₦2,000.00
+                {`₦${balance.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
               </p>
             </div>
             <Wifi

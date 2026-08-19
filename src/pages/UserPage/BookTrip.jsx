@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { supabase } from '../../utils/supabase';
 
 // Helper function to generate GSB + 8-character random code
 const generateBookingRef = () => {
@@ -10,47 +12,14 @@ const generateBookingRef = () => {
   return `GSB-${randomCode}`;
 };
 
-// Mock route & bus data
-const ROUTES = [
-  { id: '1', origin: 'Umuahia Terminal', destination: 'Aba Central Park' },
-  { id: '2', origin: 'Umuahia Terminal', destination: 'Owerri Junction' },
-  { id: '3', origin: 'Aba Central Park', destination: 'Port Harcourt Hub' },
-];
-
-const BUSES = [
-  {
-    id: 'bus-101',
-    routeId: '1',
-    operator: 'Abia Express Line',
-    busNumber: 'AB-204-UM',
-    departureTime: '07:30 AM',
-    type: '14-Seater AC Toyota HiAce',
-    price: 3500,
-    availableSeats: 6,
-  },
-  {
-    id: 'bus-102',
-    routeId: '1',
-    operator: 'Abia Transit Executive',
-    busNumber: 'AB-881-AB',
-    departureTime: '09:00 AM',
-    type: '18-Seater Sprinter (Free WiFi)',
-    price: 4200,
-    availableSeats: 3,
-  },
-  {
-    id: 'bus-201',
-    routeId: '2',
-    operator: 'Abia Express Line',
-    busNumber: 'OW-102-UM',
-    departureTime: '08:15 AM',
-    type: '14-Seater AC Bus',
-    price: 3000,
-    availableSeats: 10,
-  },
-];
-
 export default function ShuttleBooking() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const directRouteId = location.state?.routeId;
+
+  const [dbRoutes, setDbRoutes] = useState([]);
+  const [dbBuses, setDbBuses] = useState([]);
+
   const getTodayString = () => new Date().toISOString().split('T')[0];
   
   const getTomorrowString = () => {
@@ -74,7 +43,65 @@ export default function ShuttleBooking() {
   const [bookingRef, setBookingRef] = useState('');
   const [isPaid, setIsPaid] = useState(false);
 
-  const availableBuses = BUSES.filter((bus) => bus.routeId === selectedRoute);
+  useEffect(() => {
+    const fetchRoutes = async () => {
+      const { data, error } = await supabase
+        .from('routes')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching routes:', error);
+        return;
+      }
+
+      // Map raw DB data to our unique Routes array
+      const uniqueRoutesMap = new Map();
+      const mappedBuses = [];
+
+      data.forEach(r => {
+        const routeId = `${r.origin}-${r.destination}`;
+        if (!uniqueRoutesMap.has(routeId)) {
+          uniqueRoutesMap.set(routeId, {
+            id: routeId,
+            origin: r.origin,
+            destination: r.destination
+          });
+        }
+        
+        mappedBuses.push({
+          id: r.id, // The raw UUID
+          routeId: routeId,
+          operator: r.bus_assigned_name,
+          busNumber: r.bus_assigned_id, // we use ID as number here for display
+          departureTime: r.departure_time,
+          departureDate: r.departure_date,
+          type: 'Standard Shuttle', // Fallback
+          price: r.price_per_seat,
+          availableSeats: r.total_capacity - r.seats_booked,
+        });
+      });
+
+      setDbRoutes(Array.from(uniqueRoutesMap.values()));
+      setDbBuses(mappedBuses);
+
+      // Direct booking flow logic
+      if (directRouteId) {
+        const targetBus = mappedBuses.find(b => b.id === directRouteId);
+        if (targetBus) {
+          setSelectedRoute(targetBus.routeId);
+          setTravelDate(targetBus.departureDate || todayStr);
+          setSelectedBus(targetBus);
+          setStep(1); // Land on Step 1 so they can pick seat count, but everything is pre-filled
+        }
+      }
+    };
+    fetchRoutes();
+  }, [directRouteId]);
+
+  const availableBuses = dbBuses
+    .filter((bus) => bus.routeId === selectedRoute && bus.departureDate === travelDate)
+    .filter((bus) => (directRouteId ? bus.id === directRouteId : true));
 
   const handleSeatCountChange = (count) => {
     const numSeats = Math.max(1, Math.min(6, parseInt(count) || 1));
@@ -164,7 +191,7 @@ export default function ShuttleBooking() {
     setIsPaid(false);
   };
 
-  const routeObj = ROUTES.find((r) => r.id === selectedRoute);
+  const routeObj = dbRoutes.find((r) => r.id === selectedRoute);
   const totalFare = selectedBus ? selectedBus.price * seatCount : 0;
 
   return (
@@ -249,7 +276,7 @@ export default function ShuttleBooking() {
                   required
                 >
                   <option value="">-- Choose Departure & Destination --</option>
-                  {ROUTES.map((route) => (
+                  {dbRoutes.map((route) => (
                     <option key={route.id} value={route.id}>
                       {route.origin} to {route.destination}
                     </option>

@@ -63,3 +63,38 @@ begin
   return v_email;
 end;
 $$;
+
+
+-- 7. Create a table for dynamic routes
+create table public.routes (
+  id uuid default gen_random_uuid() primary key,
+  origin text not null,
+  destination text not null,
+  departure_time text not null,
+  departure_date text not null,
+  frequency text default 'Daily',
+  bus_assigned_id text,
+  bus_assigned_name text,
+  price_per_seat numeric not null,
+  total_capacity integer not null,
+  seats_booked integer default 0,
+  stops integer default 0,
+  km integer default 0,
+  duration text default '',
+  status text default 'Scheduled',
+  created_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+-- 8. Enable RLS on routes table
+alter table public.routes enable row level security;
+
+-- 9. Allow everyone to read the routes (public access)
+create policy "Routes are viewable by everyone."
+  on public.routes for select
+  using ( true );
+
+-- 10. Allow authenticated users to insert, update, and delete routes (admin access)
+create policy "Routes can be managed by authenticated users."
+  on public.routes for all
+  using ( auth.role() = 'authenticated' )
+  with check ( auth.role() = 'authenticated' );

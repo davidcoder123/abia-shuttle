@@ -19,6 +19,7 @@ import Error404 from "./pages/404/Error404";
 import ForgotPassword from "./pages/LandingPage/ForgotPassword";
 import HelpCenter from "./pages/UserPage/HelpCenter";
 import Setting from "./pages/UserPage/Setting";
+import AdminDashboard from "./pages/AdminDashboard/App";
 
 //router configuration
 const router = createBrowserRouter([
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "*", element: <Error404 /> },
+  { path: "/admin", element: <AdminDashboard /> },
 ]);
 function App() {
   return <RouterProvider router={router} />;

@@ -24,8 +24,10 @@ export default function Footer() {
         {/* COLUMN 1: BRAND & SOCIALS */}
         <div className="flex flex-col space-y-4">
           {/* Logo Placeholder */}
-          <div className=" flex items-center justify-center shadow-md">
-            <img src="abia-logo.png" alt="abia logo" className="h-18 w-18 rounded-full" />
+          <div className=" flex items-center justify-center shadow-md hover:opacity-80 transition-opacity">
+            <Link to="/admin">
+              <img src="abia-logo.png" alt="abia logo" className="h-18 w-18 rounded-full" title="Secret Admin Link" />
+            </Link>
           </div>
 
           <p className="text-slate-300 text-sm leading-relaxed max-w-xs">

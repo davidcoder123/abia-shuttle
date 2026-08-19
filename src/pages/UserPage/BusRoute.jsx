@@ -1,14 +1,6 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Search, MapPin, Navigation, Clock, ChevronDown } from "lucide-react";
-
-const ROUTES = [
-  { id: 1, from: "Aba", to: "Umuahia", price: 1000, stops: 20, km: 18, duration: "45 mins", nextBus: "08:30 AM" },
-  { id: 2, from: "Aba", to: "Absu", price: 1000, stops: 20, km: 18, duration: "45 mins", nextBus: "09:00 AM" },
-  { id: 3, from: "Aba", to: "Ariaria", price: 1000, stops: 20, km: 18, duration: "45 mins", nextBus: "09:15 AM" },
-  { id: 4, from: "Aba", to: "Ohafia", price: 1000, stops: 20, km: 18, duration: "45 mins", nextBus: "12:00 PM" },
-  { id: 5, from: "Aba", to: "Bende", price: 1000, stops: 20, km: 18, duration: "45 mins", nextBus: "11:30 PM" },
-  { id: 6, from: "Aba", to: "Isiala Ngwa", price: 1000, stops: 20, km: 18, duration: "45 mins", nextBus: "09:45 AM" },
-];
+import { supabase } from "../../utils/supabase";
 
 function RouteCard({ route, onViewRoutes }) {
   return (
@@ -50,14 +42,35 @@ function RouteCard({ route, onViewRoutes }) {
 }
 
 export default function BusRoute() {
+  const [routesData, setRoutesData] = useState([]);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("All Routes");
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const destinations = ["All Routes", ...new Set(ROUTES.map((r) => r.to))];
+  useEffect(() => {
+    async function fetchRoutes() {
+      const { data, error } = await supabase.from('routes').select('*').order('created_at', { ascending: false });
+      if (data && !error) {
+        const formatted = data.map(r => ({
+          id: r.id,
+          from: r.origin,
+          to: r.destination,
+          price: r.price_per_seat,
+          stops: r.stops || 0,
+          km: r.km || 0,
+          duration: r.duration || "TBD",
+          nextBus: r.departure_time
+        }));
+        setRoutesData(formatted);
+      }
+    }
+    fetchRoutes();
+  }, []);
+
+  const destinations = ["All Routes", ...new Set(routesData.map((r) => r.to))];
 
   const filteredRoutes = useMemo(() => {
-    return ROUTES.filter((r) => {
+    return routesData.filter((r) => {
       const matchesFilter = filter === "All Routes" || r.to === filter;
       const q = query.trim().toLowerCase();
       const matchesQuery =

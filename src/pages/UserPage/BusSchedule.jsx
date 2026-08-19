@@ -1,5 +1,7 @@
 // export default BusSchedule;
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../../utils/supabase";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaArrowDownLong } from "react-icons/fa6";
@@ -10,56 +12,38 @@ import { GoDotFill } from "react-icons/go";
 import ReadyToTravel from "../../../components/ReadyToTravel";
 
 function BusSchedule() {
-  const [routes] = useState([
-    {
-      id: 1,
-      text: "BUS-103",
-      text2: "Sat,Jul 25",
-      text3: "09:56 PM",
-      text4: "Aba",
-      text5: "40/40 seats available",
-      text6: "01:56 AM",
-      text7: "Umuahia",
-      text8: "N800.00",
-      text9: "per person",
-      text10: "Book Now",
-      showPill: false,
-    },
-
-    {
-      id: 2,
-      text: "BUS-103",
-      text2: "Sat,Jul 25",
-      text3: "09:56 PM",
-      text4: "Umuahia",
-      text5: "30/40 seats available",
-      text6: "01:56 AM",
-      text7: "Aba",
-      text8: "N800.00",
-      text9: "per person",
-      text10: "Book Now",
-      showPill: true,
-    },
-
-    {
-      id: 3,
-      text: "BUS-103",
-      text2: "Sat,Jul 25",
-      text3: "09:56 PM",
-      text4: "Umuahia",
-      text5: "30/40 seats available",
-      text6: "01:56 AM",
-      text7: "Aba",
-      text8: "N800.00",
-      text9: "per person",
-      text10: "Book Now",
-      showPill: true,
-    },
-  ]);
+  const [routes, setRoutes] = useState([]);
 
   const [fromCity, setFromCity] = useState("");
   const [toCity, setToCity] = useState("");
-  const [filteredBuses, setFilteredBuses] = useState(routes);
+  const [filteredBuses, setFilteredBuses] = useState([]);
+
+  useEffect(() => {
+    async function fetchRoutes() {
+      const { data, error } = await supabase.from('routes').select('*').order('created_at', { ascending: false });
+      if (data && !error) {
+        const formattedRoutes = data.map(r => ({
+          id: r.id,
+          text: r.bus_assigned_name || 'Abia Express Line',
+          text2: r.departure_date,
+          text3: r.departure_time,
+          text4: r.origin,
+          text5: `${r.total_capacity - r.seats_booked}/${r.total_capacity} seats available`,
+          text6: 'TBD',
+          text7: r.destination,
+          text8: `₦${r.price_per_seat.toLocaleString()}`,
+          text9: "per person",
+          text10: "Book Now",
+          showPill: (r.total_capacity - r.seats_booked) <= 10
+        }));
+        setRoutes(formattedRoutes);
+        setFilteredBuses(formattedRoutes);
+      }
+    }
+    fetchRoutes();
+  }, []);
+
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     const results = routes.filter((route) => {
@@ -145,7 +129,7 @@ function BusSchedule() {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mx-4 sm:mx-6 md:mx-10 my-5 gap-3 py-5 px-5 md:px-35">
         <p className="font-medium text-[16px] sm:text-[18px] md:text-[20px] text-[#00000085]">
-          10 routes available
+          {filteredBuses.length} routes available
         </p>
 
         <div className="flex items-center gap-2">
@@ -248,7 +232,10 @@ function BusSchedule() {
 
                   <p className="text-sm text-gray-500">{card.text9}</p>
 
-                  <button className=" text-white font-semibold px-5 py-3 rounded-xl mt-3 w-full bg-[#FF6200] hover:bg-[#803100] cursor-pointer sm:w-auto transition-all duration-300">
+                  <button 
+                    onClick={() => navigate('/book', { state: { routeId: card.id } })}
+                    className=" text-white font-semibold px-5 py-3 rounded-xl mt-3 w-full bg-[#FF6200] hover:bg-[#803100] cursor-pointer sm:w-auto transition-all duration-300"
+                  >
                     {card.text10}
                   </button>
                 </div>
